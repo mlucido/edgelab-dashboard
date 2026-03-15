@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T19:16:45.914465+00:00",
+    "ts": "2026-03-15T19:21:47.600062+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -252,31 +252,31 @@
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 12:16:35,557 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
-        },
-        {
-          "name": "ESPN Events",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 12:16:15,446 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 12:21:35,851 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
           "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 12:15:34,602 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 12:21:30,598 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+        },
+        {
+          "name": "ESPN Events",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 12:21:24,215 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 12:15:27,028 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 12:20:50,100 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         },
         {
           "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 12:14:38,171 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 12:19:38,404 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 12:15:34",
+        "last_scan": "2026-03-15 12:21:30",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -533,5 +533,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T19:16:46.109105+00:00"
+  "_exported_at": "2026-03-15T19:21:47.719072+00:00"
 }
