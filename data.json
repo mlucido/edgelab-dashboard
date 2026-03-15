@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T20:52:19.438091+00:00",
+    "ts": "2026-03-15T20:57:21.043842+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -252,26 +252,31 @@
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 13:52:14,301 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+          "detail": "2026-03-15 13:57:19,137 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:51:51,314 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 13:56:51,740 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:50:10,915 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 13:55:36,931 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:49:12,562 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 13:55:20,459 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+        },
+        {
+          "name": "NewsAPI",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 13:54:50,521 [src.feeds.events] INFO: NewsAPI poll: 27 articles published"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 13:50:10",
+        "last_scan": "2026-03-15 13:55:36",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -552,5 +557,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T20:52:19.590281+00:00"
+  "_exported_at": "2026-03-15T20:57:21.174025+00:00"
 }
