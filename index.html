@@ -5,230 +5,1818 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EdgeLab Command Center</title>
 <style>
-:root {
-  --bg: #0a0a0a;
-  --card: #141414;
-  --border: #2a2a2a;
-  --text: #e0e0e0;
-  --muted: #666;
-  --green: #00c853;
-  --yellow: #ffd600;
-  --orange: #ff6d00;
-  --red: #d50000;
-  --blue: #2979ff;
-  --mono: 'SF Mono','Monaco','Menlo','Fira Code',monospace;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;line-height:1.5}
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2129;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-dim: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d29922;
+    --purple: #bc8cff;
+    --mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.5;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-h1{font-size:18px;color:var(--green);letter-spacing:2px}
-#last-updated{color:var(--muted);font-size:11px}
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 220px;
+    min-width: 220px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+  }
+  .sidebar-header {
+    padding: 0 16px 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+  .sidebar-header h1 {
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+  .sidebar-header .subtitle {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
 
-.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:24px}
-@media(max-width:800px){.metrics{grid-template-columns:repeat(2,1fr)}}
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  .nav-item:hover {
+    color: var(--text);
+    background: rgba(88,166,255,0.04);
+  }
+  .nav-item.active {
+    color: var(--accent);
+    background: rgba(88,166,255,0.08);
+    border-left-color: var(--accent);
+  }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;padding:0 24px 24px}
+  .nav-badge {
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-left: auto;
+  }
+  .badge-live { background: #1a3a1a; color: var(--green); }
+  .badge-paper { background: #3a3a1a; color: var(--yellow); }
+  .badge-running { background: #1a3a1a; color: var(--green); }
+  .badge-stopped { background: #3a1a1a; color: var(--red); }
 
-.card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px}
-.card h2{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+  .sidebar-section {
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 16px 4px;
+  }
 
-.metric-value{font-size:28px;font-weight:bold;color:var(--green)}
-.metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+  .sidebar-spacer { flex: 1; }
 
-table{width:100%;border-collapse:collapse}
-th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:8px;text-align:left;border-bottom:1px solid var(--border)}
-td{padding:8px;border-bottom:1px solid #1a1a1a;font-size:12px}
+  .halt-btn {
+    margin: 8px 16px;
+    padding: 10px;
+    background: #3a1a1a;
+    border: 1px solid var(--red);
+    border-radius: 6px;
+    color: var(--red);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.15s;
+  }
+  .halt-btn:hover {
+    background: var(--red);
+    color: #fff;
+  }
 
-.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:1px}
-.badge-live{background:#00c85318;color:var(--green);border:1px solid #00c85355}
-.badge-paper{background:#ffd60018;color:var(--yellow);border:1px solid #ffd60055}
-.badge-blocked{background:#d5000018;color:var(--red);border:1px solid #d5000055}
-.badge-running{background:#2979ff18;color:var(--blue);border:1px solid #2979ff55}
-.badge-stopped{background:#d5000018;color:var(--red);border:1px solid #d5000055}
+  .sidebar-footer {
+    padding: 8px 16px;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
 
-.pnl-pos{color:var(--green)}.pnl-neg{color:var(--red)}
+  /* ── Main content ── */
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+  }
 
-.signal-feed{max-height:220px;overflow-y:auto}
-.signal-item{padding:6px 0;border-bottom:1px solid #1a1a1a;font-size:11px}
-.signal-time{color:var(--muted);margin-right:8px}
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 
-#alert-banner{display:none;background:var(--red);color:#fff;padding:12px 24px;text-align:center;font-weight:700;letter-spacing:1px}
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .page-title {
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .refresh-info {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
 
-.stat-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1a1a1a}
-.stat-label{color:var(--muted)}
+  /* ── Panels ── */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .panel-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: normal;
+  }
+  .tag-bot { background: #1f3a5f; color: #58a6ff; }
+  .tag-edge { background: #2a1f3f; color: #bc8cff; }
+  .tag-risk { background: #3f2a1f; color: #d29922; }
 
-.bar-bg{background:#1a1a1a;height:6px;border-radius:3px;margin-top:6px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;background:var(--green);transition:width .5s}
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ── Strategy cards ── */
+  .strategy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .strategy-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .strategy-name {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .mode-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .mode-live { background: #1a3a1a; color: var(--green); border: 1px solid var(--green); }
+  .mode-paper { background: #3a3a1a; color: var(--yellow); border: 1px solid var(--yellow); }
+
+  /* ── Stats ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+  .stat-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .stat {
+    padding: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+  }
+  .stat-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-value {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 2px;
+  }
+  .stat-value-lg {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 2px;
+  }
+  .positive { color: var(--green); }
+  .negative { color: var(--red); }
+  .neutral { color: var(--text); }
+  .warn { color: var(--yellow); }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  th {
+    text-align: left;
+    color: var(--text-dim);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid #21262d;
+    white-space: nowrap;
+  }
+  tr:hover td { background: rgba(88,166,255,0.04); }
+
+  .no-data {
+    color: var(--text-dim);
+    font-style: italic;
+    text-align: center;
+    padding: 24px;
+  }
+
+  /* ── Log viewer ── */
+  .log-viewer {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .log-line {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .log-line-error { color: var(--red); }
+  .log-line-warn { color: var(--yellow); }
+  .log-line-info { color: var(--text-dim); }
+  .log-line-trade { color: var(--green); }
+
+  /* ── Alert feed ── */
+  .alert-feed {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .alert-row {
+    display: flex;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid #21262d;
+    font-size: 11px;
+  }
+  .alert-ts { color: var(--text-dim); min-width: 130px; }
+  .alert-src {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+  }
+  .alert-src-BOT { background: #1f3a5f; color: #58a6ff; }
+  .alert-src-EDGE { background: #2a1f3f; color: #bc8cff; }
+  .alert-level-ERROR, .alert-level-CRIT { color: var(--red); }
+  .alert-level-WARN { color: var(--yellow); }
+  .alert-level-TRADE, .alert-level-CLOSE { color: var(--green); }
+  .alert-level-SIGNAL { color: var(--accent); }
+  .alert-level-BLOCK { color: var(--text-dim); }
+  .alert-msg { overflow: hidden; text-overflow: ellipsis; }
+
+  /* ── EdgeLab mode toggle ── */
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--bg);
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+  .mode-toggle-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+  }
+  .go-live-btn {
+    padding: 6px 16px;
+    background: transparent;
+    border: 1px solid var(--green);
+    border-radius: 4px;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .go-live-btn:hover {
+    background: var(--green);
+    color: #fff;
+  }
+  .go-live-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+  .status-live { background: var(--green); }
+  .status-halted { background: var(--red); }
+  .status-offline { background: var(--text-dim); }
+
+  /* ── Confirm dialog ── */
+  .confirm-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .confirm-overlay.show { display: flex; }
+  .confirm-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 400px;
+    text-align: center;
+  }
+  .confirm-box h3 {
+    color: var(--red);
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  .confirm-box p {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  .confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+  }
+  .confirm-actions button {
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid var(--border);
+  }
+  .btn-cancel {
+    background: var(--surface2);
+    color: var(--text);
+  }
+  .btn-confirm-halt {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+  }
 </style>
 </head>
 <body>
 
-<div id="alert-banner"></div>
+<!-- ═══ SIDEBAR ═══ -->
+<div class="sidebar">
+  <div class="sidebar-header">
+    <h1>EDGELAB</h1>
+    <div class="subtitle">Command Center</div>
+  </div>
 
-<header>
-  <h1>&#x2B21; EDGELAB COMMAND CENTER</h1>
-  <div id="last-updated">Loading...</div>
-</header>
+  <div class="sidebar-section">Navigation</div>
+  <div class="nav-item active" data-tab="master-overview">
+    Master Overview
+  </div>
+  <div class="nav-item" data-tab="capital-command">
+    Capital Command
+  </div>
+  <div class="nav-item" data-tab="edgelab">
+    EdgeLab
+    <span class="nav-badge badge-paper" id="nav-edge-badge">PAPER</span>
+  </div>
+  <div class="nav-item" data-tab="bot">
+    Bot
+    <span class="nav-badge badge-stopped" id="nav-bot-badge">--</span>
+  </div>
+  <div class="nav-item" data-tab="performance">
+    Performance
+  </div>
+  <div class="nav-item" data-tab="risk">
+    Risk
+  </div>
 
-<div class="metrics">
-  <div class="card">
-    <h2>Total Capital</h2>
-    <div class="metric-value" id="total-capital">&mdash;</div>
-    <div class="metric-label">Deployed across live strategies</div>
+  <div class="sidebar-section">Intelligence</div>
+  <div class="nav-item" data-tab="framework">
+    Framework
   </div>
-  <div class="card">
-    <h2>Today's P&amp;L</h2>
-    <div class="metric-value" id="today-pnl">&mdash;</div>
-    <div class="metric-label">All strategies combined</div>
+  <div class="nav-item" data-tab="news-arb">
+    News Arb
+    <span class="nav-badge badge-paper" id="nav-newsarb-badge">PAPER</span>
   </div>
-  <div class="card">
-    <h2>Strategies Live</h2>
-    <div class="metric-value" id="live-count">&mdash;</div>
-    <div class="metric-label">of 6 total strategies</div>
+  <div class="nav-item" data-tab="sports-momentum">
+    Sports Momentum
+    <span class="nav-badge badge-paper" id="nav-sm-badge">PAPER</span>
   </div>
-  <div class="card">
-    <h2>Bot Bankroll</h2>
-    <div class="metric-value" id="bot-bankroll">&mdash;</div>
-    <div class="metric-label">Kalshi crypto momentum</div>
+  <div class="nav-item" data-tab="resolution-lag">
+    Resolution Lag
+    <span class="nav-badge badge-paper" id="nav-rl-badge">PAPER</span>
+  </div>
+  <div class="nav-item" data-tab="funding-rate-arb">
+    Funding Rate Arb
+    <span class="nav-badge badge-paper" id="nav-fra-badge">PAPER</span>
+  </div>
+  <div class="nav-item" data-tab="liquidity-provision">
+    Liquidity Prov.
+    <span class="nav-badge badge-paper" id="nav-lp-badge">PAPER</span>
+  </div>
+
+  <div class="sidebar-spacer"></div>
+
+  <button class="halt-btn" id="halt-btn">HALT ALL TRADING</button>
+
+  <div class="sidebar-footer" id="refresh-info">Loading...</div>
+</div>
+
+<!-- ═══ MAIN CONTENT ═══ -->
+<div class="main">
+
+<!-- ── TAB 0: MASTER OVERVIEW ── -->
+<div class="tab-content active" id="tab-master-overview">
+  <div class="page-header">
+    <div class="page-title">Master Overview</div>
+    <span class="refresh-info" id="mo-status"></span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">All Strategies</div>
+    <div id="mo-strategy-grid"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Capital Allocation</div>
+    <div class="stat-grid" id="mo-capital-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Portfolio Summary</div>
+    <div class="stat-grid" id="mo-portfolio-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Learning Loop</div>
+    <div id="mo-learning-loop"></div>
   </div>
 </div>
 
-<div style="padding:0 24px 24px">
-  <div class="card">
-    <h2>All Strategies</h2>
-    <table>
-      <thead><tr><th>Strategy</th><th>Mode</th><th>Win Rate</th><th>P&amp;L</th><th>Trades</th><th>Capital</th><th>Status</th></tr></thead>
-      <tbody id="strategy-table"><tr><td colspan="7" style="color:var(--muted)">Loading...</td></tr></tbody>
-    </table>
+<!-- ── TAB 1: CAPITAL COMMAND ── -->
+<div class="tab-content" id="tab-capital-command">
+  <div class="page-header">
+    <div class="page-title">Capital Command</div>
+    <span class="refresh-info" id="cc-status"></span>
+  </div>
+
+  <!-- Combined stats -->
+  <div class="panel">
+    <div class="panel-title">Total Capital Overview</div>
+    <div class="stat-grid-4" id="cc-total-stats"></div>
+  </div>
+
+  <!-- Strategy cards -->
+  <div class="grid-2" id="cc-cards"></div>
+</div>
+
+<!-- ── TAB 2: EDGELAB ── -->
+<div class="tab-content" id="tab-edgelab">
+  <div class="page-header">
+    <div class="page-title">EdgeLab</div>
+  </div>
+
+  <!-- Mode toggle (Paper/Live) — inside EdgeLab tab only -->
+  <div class="mode-toggle" id="edge-mode-toggle">
+    <span class="mode-toggle-label">Current Mode:</span>
+    <span class="mode-badge mode-paper" id="edge-mode-badge">PAPER</span>
+    <button class="go-live-btn" id="edge-go-live-btn" disabled>Go Live</button>
+  </div>
+
+  <!-- Scan Status -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-edge">SCAN</span> Scan Status</div>
+    <div class="stat-grid-4" id="edge-scan-stats"></div>
+  </div>
+
+  <!-- Feeds Status -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-edge">FEEDS</span> Data Feeds</div>
+    <div id="edge-feeds"></div>
+  </div>
+
+  <!-- Paper P&L -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-edge">P&L</span> Paper P&L</div>
+    <div class="stat-grid" id="edge-pnl-stats"></div>
+  </div>
+
+  <!-- Signals / Opportunities -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-edge">SIGNALS</span> Recent Opportunities</div>
+    <div id="edge-signals"></div>
+  </div>
+
+  <!-- EdgeLab Log -->
+  <div class="panel">
+    <div class="panel-title">EdgeLab Log <span style="font-size:10px;color:var(--text-dim);font-weight:normal">(last 50 lines)</span></div>
+    <div class="log-viewer" id="edge-live-log"></div>
   </div>
 </div>
 
-<div class="grid">
-  <div class="card">
-    <h2>Recent Signals</h2>
-    <div class="signal-feed" id="signal-feed"><div style="color:var(--muted)">Loading...</div></div>
+<!-- ── TAB 3: BOT ── -->
+<div class="tab-content" id="tab-bot">
+  <div class="page-header">
+    <div class="page-title">Bot — Kalshi Crypto Momentum</div>
+    <span id="bot-process-status"></span>
   </div>
-  <div class="card">
-    <h2>System Health</h2>
-    <div id="system-health">Loading...</div>
+
+  <!-- Header stats -->
+  <div class="panel">
+    <div class="stat-grid-4" id="bot-header-stats"></div>
   </div>
-  <div class="card">
-    <h2>Capital Allocation</h2>
-    <div id="capital-alloc">Loading...</div>
+
+  <!-- Open Positions -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-bot">OPEN</span> Open Positions</div>
+    <div id="bot-positions"></div>
   </div>
-  <div class="card">
-    <h2>Learning Loop</h2>
-    <div id="learning-loop">Loading...</div>
+
+  <!-- Recent Closed -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-bot">CLOSED</span> Recent Closed Trades</div>
+    <div id="bot-closed"></div>
+  </div>
+
+  <!-- Live Log -->
+  <div class="panel">
+    <div class="panel-title">Live Log <span style="font-size:10px;color:var(--text-dim);font-weight:normal">(last 50 lines)</span></div>
+    <div class="log-viewer" id="bot-live-log"></div>
   </div>
 </div>
 
-<footer style="padding:16px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:10px;text-align:center">
-  EdgeLab &mdash; Automated trading research platform &mdash; Data updates every 5 minutes
-</footer>
+<!-- ── TAB 4: PERFORMANCE ── -->
+<div class="tab-content" id="tab-performance">
+  <div class="page-header">
+    <div class="page-title">Performance</div>
+  </div>
+
+  <!-- Combined P&L -->
+  <div class="panel">
+    <div class="panel-title">Combined P&L Summary</div>
+    <div class="stat-grid" id="perf-combined-stats"></div>
+  </div>
+
+  <!-- Bot daily history -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-bot">BOT</span> Daily P&L History</div>
+    <div id="perf-daily-table"></div>
+  </div>
+
+  <!-- Alerts -->
+  <div class="panel">
+    <div class="panel-title">Unified Alert Feed <span style="font-size:10px;color:var(--text-dim);font-weight:normal">(last 20)</span></div>
+    <div class="alert-feed" id="perf-alerts"></div>
+  </div>
+</div>
+
+<!-- ── TAB 5: RISK ── -->
+<div class="tab-content" id="tab-risk">
+  <div class="page-header">
+    <div class="page-title">Risk Management</div>
+  </div>
+
+  <!-- Risk envelope -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-risk">RISK</span> Shared Risk Envelope</div>
+    <div class="stat-grid" id="risk-stats"></div>
+  </div>
+
+  <!-- Circuit breakers -->
+  <div class="panel">
+    <div class="panel-title">Circuit Breakers</div>
+    <div id="risk-breakers"></div>
+  </div>
+
+  <!-- Bot signals -->
+  <div class="panel">
+    <div class="panel-title"><span class="tag tag-bot">BOT</span> Recent Signals (Gate Activity)</div>
+    <div id="risk-signals"></div>
+  </div>
+
+  <!-- Export -->
+  <div class="panel">
+    <div class="panel-title">Data Export</div>
+    <div style="padding:8px">
+      <button onclick="exportData()" style="padding:6px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:var(--mono);font-size:11px;cursor:pointer;">
+        Export All Data as JSON
+      </button>
+      <span id="export-status" style="margin-left:12px;font-size:11px;color:var(--text-dim)"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB: FRAMEWORK ── -->
+<div class="tab-content" id="tab-framework">
+  <div class="page-header">
+    <div class="page-title">Self-Learning Framework</div>
+    <span class="refresh-info" id="fw-status"></span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Strategy Performance</div>
+    <div id="fw-strategies" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Capital Allocations</div>
+    <div id="fw-allocations" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Config Suggestions</div>
+    <div id="fw-suggestions" class="no-data">Loading...</div>
+  </div>
+</div>
+
+<!-- ── TAB: NEWS ARB ── -->
+<div class="tab-content" id="tab-news-arb">
+  <div class="page-header">
+    <div class="page-title">News Arb Strategy</div>
+    <span id="na-mode-badge" class="nav-badge badge-paper">PAPER</span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Status</div>
+    <div class="stat-grid" id="na-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Recent Signals</div>
+    <div id="na-signals" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Promotion Status</div>
+    <div id="na-promotion"></div>
+  </div>
+</div>
+
+<!-- ── TAB: SPORTS MOMENTUM ── -->
+<div class="tab-content" id="tab-sports-momentum">
+  <div class="page-header">
+    <div class="page-title">Sports Momentum Strategy</div>
+    <span id="sm-mode-badge" class="nav-badge badge-paper">PAPER</span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Status</div>
+    <div class="stat-grid" id="sm-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Active Sports</div>
+    <div id="sm-sports" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Recent Signals</div>
+    <div id="sm-signals" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Promotion Status</div>
+    <div id="sm-promotion"></div>
+  </div>
+</div>
+
+<!-- ── TAB: RESOLUTION LAG ── -->
+<div class="tab-content" id="tab-resolution-lag">
+  <div class="page-header">
+    <div class="page-title">Resolution Lag Strategy</div>
+    <span id="rl-mode-badge" class="nav-badge badge-paper">PAPER</span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Status</div>
+    <div class="stat-grid" id="rl-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Lag Metrics</div>
+    <div class="stat-grid" id="rl-lag-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Recent Signals</div>
+    <div id="rl-signals" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Promotion Status</div>
+    <div id="rl-promotion"></div>
+  </div>
+</div>
+
+<!-- ── TAB: FUNDING RATE ARB ── -->
+<div class="tab-content" id="tab-funding-rate-arb">
+  <div class="page-header">
+    <div class="page-title">Funding Rate Arb Strategy</div>
+    <span id="fra-mode-badge" class="nav-badge badge-paper">PAPER</span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Status</div>
+    <div class="stat-grid" id="fra-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Current Funding Rates</div>
+    <div id="fra-rates" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Active Signals</div>
+    <div id="fra-signals" class="no-data">Loading...</div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Promotion Status</div>
+    <div id="fra-promotion"></div>
+  </div>
+</div>
+
+<!-- ── TAB: LIQUIDITY PROVISION ── -->
+<div class="tab-content" id="tab-liquidity-provision">
+  <div class="page-header">
+    <div class="page-title">Liquidity Provision Strategy</div>
+    <span id="lp-mode-badge" class="nav-badge badge-paper">PAPER</span>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Status</div>
+    <div class="stat-grid" id="lp-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Inventory</div>
+    <div class="stat-grid" id="lp-inventory-stats"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">Promotion Status</div>
+    <div id="lp-promotion"></div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<!-- Halt confirmation dialog -->
+<div class="confirm-overlay" id="halt-confirm">
+  <div class="confirm-box">
+    <h3>HALT ALL TRADING</h3>
+    <p>This is a global emergency stop. It will attempt to halt all active strategies. Are you sure?</p>
+    <div class="confirm-actions">
+      <button class="btn-cancel" onclick="closeHaltConfirm()">Cancel</button>
+      <button class="btn-confirm-halt" onclick="executeHalt()">HALT NOW</button>
+    </div>
+  </div>
+</div>
 
 <script>
-async function loadData(){
-  try{
-    const r=await fetch('data.json?t='+Date.now());
-    if(!r.ok)throw new Error('HTTP '+r.status);
-    render(await r.json());
-  }catch(e){
-    document.getElementById('last-updated').textContent='Error: '+e.message;
+const REFRESH_MS = 60000;
+let lastData = null;
+
+// ── Static mode: load all data from bundled data.json ──
+let _apiCache = {};
+async function _loadBundle() {
+  try {
+    const r = await fetch('data.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    _apiCache = await r.json();
+  } catch(e) {
+    console.warn('Failed to load data.json:', e);
   }
 }
-
-function badge(mode){
-  const c=mode==='LIVE'?'live':mode==='PAPER'?'paper':'blocked';
-  return '<span class="badge badge-'+c+'">'+mode+'</span>';
-}
-function statusBadge(s){
-  const c=s==='RUNNING'?'running':'stopped';
-  return '<span class="badge badge-'+c+'">'+s+'</span>';
-}
-function pnl(v){
-  if(v==null)return'<span style="color:var(--muted)">&mdash;</span>';
-  const c=v>=0?'pnl-pos':'pnl-neg';
-  return '<span class="'+c+'">$'+(v>=0?'+':'')+v.toFixed(2)+'</span>';
-}
-function wr(v){
-  if(!v)return'<span style="color:var(--muted)">&mdash;</span>';
-  const p=(v*100).toFixed(1)+'%';
-  const c=v>=0.6?'var(--green)':v>=0.5?'var(--yellow)':'var(--red)';
-  return '<span style="color:'+c+'">'+p+'</span>';
-}
-function ago(iso){
-  if(!iso)return'never';
-  const d=Math.floor((Date.now()-new Date(iso).getTime())/60000);
-  if(d<1)return'just now';
-  if(d<60)return d+'m ago';
-  return Math.floor(d/60)+'h '+d%60+'m ago';
-}
-
-function render(d){
-  document.getElementById('last-updated').textContent='Updated '+ago(d.exported_at);
-  if(d.circuit_breaker_active){
-    const b=document.getElementById('alert-banner');
-    b.style.display='block';
-    b.textContent='CIRCUIT BREAKER ACTIVE — CHECK SYSTEM';
+// Shim: replace fetch('/api/...') with cache reads
+const _origFetch = window.fetch;
+window.fetch = function(url, opts) {
+  if (typeof url === 'string' && url.startsWith('/api/')) {
+    const key = url.replace('/api/', '');
+    const data = _apiCache[key];
+    if (data !== undefined) {
+      return Promise.resolve({
+        ok: true, status: 200,
+        json: () => Promise.resolve(data),
+        text: () => Promise.resolve(JSON.stringify(data)),
+      });
+    }
+    return Promise.resolve({ ok: false, status: 404, json: () => Promise.resolve({}) });
   }
-  document.getElementById('total-capital').textContent='$'+(d.total_capital||0).toFixed(2);
-  const tp=d.today_pnl||0;
-  document.getElementById('today-pnl').innerHTML=pnl(tp);
-  document.getElementById('today-pnl').style.color=tp>=0?'var(--green)':'var(--red)';
-  const liveN=(d.strategies||[]).filter(s=>s.mode==='LIVE').length;
-  document.getElementById('live-count').textContent=liveN+'/6';
-  document.getElementById('bot-bankroll').textContent='$'+(d.bot_bankroll||0).toFixed(2);
+  return _origFetch.apply(this, arguments);
+};
 
-  const tb=document.getElementById('strategy-table');
-  tb.innerHTML=(d.strategies||[]).map(s=>'<tr>'
-    +'<td>'+s.name+'</td>'
-    +'<td>'+badge(s.mode)+'</td>'
-    +'<td>'+wr(s.win_rate)+'</td>'
-    +'<td>'+pnl(s.pnl)+'</td>'
-    +'<td>'+(s.trades||0)+'</td>'
-    +'<td>'+(s.capital>0?'$'+s.capital.toFixed(0):'&mdash;')+'</td>'
-    +'<td>'+statusBadge(s.status)+'</td>'
-    +'</tr>').join('');
+function $(id) { return document.getElementById(id); }
 
-  const sf=document.getElementById('signal-feed');
-  const sigs=(d.recent_signals||[]).slice(0,10);
-  sf.innerHTML=sigs.length?sigs.map(s=>'<div class="signal-item">'
-    +'<span class="signal-time">'+s.time+'</span>'
-    +'<strong>['+s.strategy+']</strong> '+s.market
-    +' &rarr; '+s.direction
-    +'</div>').join(''):'<div style="color:var(--muted)">No recent signals</div>';
+function fmt(v, decimals=2) {
+  if (v === null || v === undefined) return '\u2014';
+  return Number(v).toFixed(decimals);
+}
 
-  const hp=document.getElementById('system-health');
-  hp.innerHTML=(d.processes||[]).map(p=>'<div class="stat-row">'
-    +'<span class="stat-label">'+p.name+'</span>'
-    +'<span style="color:'+(p.alive?'var(--green)':'var(--red)')+'">&#9679; '+(p.alive?'ALIVE':'DEAD')+'</span>'
-    +'</div>').join('');
+function fmtUsd(v) {
+  if (v === null || v === undefined) return '\u2014';
+  const n = Number(v);
+  return (n >= 0 ? '+' : '') + '$' + Math.abs(n).toFixed(2);
+}
 
-  const ap=document.getElementById('capital-alloc');
-  const allocs=(d.allocations||[]).filter(a=>a.amount>0);
-  if(allocs.length){
-    const total=allocs.reduce((s,a)=>s+a.amount,0);
-    ap.innerHTML=allocs.map(a=>{
-      const pct=total>0?(a.amount/total*100):0;
-      return '<div style="margin-bottom:8px">'
-        +'<div class="stat-row"><span class="stat-label">'+a.strategy+'</span><span>$'+a.amount.toFixed(0)+' ('+pct.toFixed(0)+'%)</span></div>'
-        +'<div class="bar-bg"><div class="bar-fill" style="width:'+pct+'%"></div></div>'
-        +'</div>';
+function fmtTs(unix) {
+  if (!unix) return '\u2014';
+  const d = new Date(unix * 1000);
+  return d.toISOString().replace('T',' ').slice(0,19) + ' UTC';
+}
+
+function pnlClass(v) {
+  if (v > 0) return 'positive';
+  if (v < 0) return 'negative';
+  return 'neutral';
+}
+
+function renderStats(el, items) {
+  el.innerHTML = items.map(([label, value, cls]) =>
+    `<div class="stat">
+      <div class="stat-label">${label}</div>
+      <div class="stat-value ${cls || 'neutral'}">${value}</div>
+    </div>`
+  ).join('');
+}
+
+function renderStatsLg(el, items) {
+  el.innerHTML = items.map(([label, value, cls]) =>
+    `<div class="stat">
+      <div class="stat-label">${label}</div>
+      <div class="stat-value-lg ${cls || 'neutral'}">${value}</div>
+    </div>`
+  ).join('');
+}
+
+// ── Tab switching ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    item.classList.add('active');
+    $('tab-' + item.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Halt button ──
+$('halt-btn').addEventListener('click', () => {
+  $('halt-confirm').classList.add('show');
+});
+
+function closeHaltConfirm() {
+  $('halt-confirm').classList.remove('show');
+}
+
+function executeHalt() {
+  // In a real implementation, this would POST to an API endpoint
+  // For now, just show confirmation
+  closeHaltConfirm();
+  $('halt-btn').textContent = 'HALT SENT';
+  $('halt-btn').style.background = 'var(--red)';
+  $('halt-btn').style.color = '#fff';
+  setTimeout(() => {
+    $('halt-btn').textContent = 'HALT ALL TRADING';
+    $('halt-btn').style.background = '#3a1a1a';
+    $('halt-btn').style.color = 'var(--red)';
+  }, 3000);
+}
+
+// ── Data export ──
+function exportData() {
+  if (!lastData) return;
+  const blob = new Blob([JSON.stringify(lastData, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'edgelab-export-' + new Date().toISOString().slice(0,10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  $('export-status').textContent = 'Exported!';
+  setTimeout(() => { $('export-status').textContent = ''; }, 2000);
+}
+
+// ── Render: Capital Command ──
+function renderCapitalCommand(data) {
+  const bot = data.bot || {};
+  const edge = data.edge || {};
+  const risk = data.risk || {};
+
+  const botBankroll = bot.bankroll || 0;
+  const edgeBankroll = edge.bankroll || 0;
+  // Total Capital = real Kalshi bankroll only (EdgeLab is paper)
+  const totalCapital = botBankroll;
+  const botTodayPnl = bot.today_pnl || 0;
+  const edgeTodayPnl = edge.today_pnl || 0;
+  const totalTodayPnl = botTodayPnl + edgeTodayPnl;
+  const botDailyLoss = bot.daily_loss || 0;
+  const combinedDailyLoss = botDailyLoss;
+
+  renderStatsLg($('cc-total-stats'), [
+    ['Total Capital', '$' + fmt(totalCapital), 'neutral'],
+    ['Today P&L', fmtUsd(totalTodayPnl), pnlClass(totalTodayPnl)],
+    ['Deployed', '$' + fmt(risk.total_deployed), risk.deploy_pct > 70 ? 'warn' : 'neutral'],
+    ['Combined Daily Loss', '$' + fmt(combinedDailyLoss, 4), combinedDailyLoss > 0 ? 'negative' : 'neutral'],
+  ]);
+
+  // Strategy cards
+  const botStatus = !bot.available ? 'OFFLINE'
+    : bot.halted ? 'HALTED'
+    : bot.process_running ? 'RUNNING' : 'STOPPED';
+  const botStatusClass = botStatus === 'RUNNING' ? 'positive'
+    : botStatus === 'HALTED' ? 'negative' : 'warn';
+
+  const edgeMode = edge.mode || 'PAPER';
+  const edgeModeClass = edgeMode === 'LIVE' ? 'mode-live' : 'mode-paper';
+
+  const edgeStatus = !edge.available ? 'OFFLINE'
+    : edge.circuit_breaker && edge.circuit_breaker.global_pause ? 'HALTED'
+    : edge.process_running ? 'SCANNING' : 'STOPPED';
+  const edgeStatusClass = edgeStatus === 'SCANNING' ? 'positive'
+    : edgeStatus === 'HALTED' ? 'negative' : 'warn';
+  const edgeScan = edge.scan_status || {};
+
+  $('cc-cards').innerHTML = `
+    <div class="strategy-card">
+      <div class="strategy-card-header">
+        <span class="strategy-name" style="color:var(--purple)">EdgeLab</span>
+        <span class="mode-badge ${edgeModeClass}">${edgeMode}</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-label">${edgeMode === 'LIVE' ? 'Balance' : 'Paper Balance'}</div>
+          <div class="stat-value neutral">$${fmt(edgeBankroll)}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Today P&L</div>
+          <div class="stat-value ${pnlClass(edgeTodayPnl)}">${fmtUsd(edgeTodayPnl)}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Status</div>
+          <div class="stat-value ${edgeStatusClass}">${edgeStatus}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Last Scan</div>
+          <div class="stat-value neutral" style="font-size:12px">${edgeScan.last_scan || '—'}</div>
+        </div>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-card-header">
+        <span class="strategy-name" style="color:var(--accent)">Bot — Kalshi Momentum</span>
+        <span class="mode-badge mode-live">LIVE</span>
+      </div>
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat-label">Bankroll</div>
+          <div class="stat-value neutral">$${fmt(botBankroll)}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Today P&L</div>
+          <div class="stat-value ${pnlClass(botTodayPnl)}">${fmtUsd(botTodayPnl)}</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Status</div>
+          <div class="stat-value ${botStatusClass}">${botStatus}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── Render: Bot tab ──
+function renderBotTab(data) {
+  const bot = data.bot || {};
+
+  // Process status badge
+  if (!bot.available) {
+    $('bot-process-status').innerHTML = '<span class="mode-badge" style="background:#3a1a1a;color:var(--red);border:1px solid var(--red)">DB UNAVAILABLE</span>';
+  } else if (bot.process_running) {
+    $('bot-process-status').innerHTML = '<span class="mode-badge mode-live">RUNNING</span>';
+  } else {
+    $('bot-process-status').innerHTML = '<span class="mode-badge" style="background:#3a1a1a;color:var(--red);border:1px solid var(--red)">STOPPED</span>';
+  }
+
+  // Header stats
+  if (!bot.available) {
+    $('bot-header-stats').innerHTML = '<div class="no-data" style="grid-column:1/-1">Bot database not found</div>';
+    $('bot-positions').innerHTML = '<div class="no-data">No data</div>';
+    $('bot-closed').innerHTML = '<div class="no-data">No data</div>';
+    $('bot-live-log').innerHTML = '<div class="no-data">No data</div>';
+    return;
+  }
+
+  renderStatsLg($('bot-header-stats'), [
+    ['Bankroll', '$' + fmt(bot.bankroll), 'neutral'],
+    ['Today P&L', fmtUsd(bot.today_pnl), pnlClass(bot.today_pnl)],
+    ['Open Positions', (bot.open_positions || []).length, 'neutral'],
+    ['Win Rate', fmt(bot.win_rate, 1) + '%', bot.win_rate >= 60 ? 'positive' : bot.win_rate > 0 ? 'warn' : 'neutral'],
+  ]);
+
+  // Open positions
+  if (bot.open_positions && bot.open_positions.length > 0) {
+    let html = '<table><tr><th>Market</th><th>Side</th><th>Contracts</th><th>Cost</th><th>Time Open</th></tr>';
+    const now = Date.now() / 1000;
+    bot.open_positions.forEach(p => {
+      const elapsed = now - (p.entry_ts || now);
+      const hours = Math.floor(elapsed / 3600);
+      const mins = Math.floor((elapsed % 3600) / 60);
+      const timeOpen = hours > 0 ? hours + 'h ' + mins + 'm' : mins + 'm';
+      html += `<tr>
+        <td title="${p.question || ''}">${p.asset} ${p.direction}</td>
+        <td>${p.contract_side}</td>
+        <td>${fmt(p.position_size / (p.entry_price || 1), 0)}</td>
+        <td>$${fmt(p.position_size)}</td>
+        <td style="color:var(--text-dim)">${timeOpen}</td>
+      </tr>`;
+    });
+    html += '</table>';
+    $('bot-positions').innerHTML = html;
+  } else {
+    $('bot-positions').innerHTML = '<div class="no-data">No open positions</div>';
+  }
+
+  // Recent closed
+  if (bot.recent_trades && bot.recent_trades.length > 0) {
+    let html = '<table><tr><th>Market</th><th>Result</th><th>Payout</th><th>Return %</th></tr>';
+    bot.recent_trades.forEach(t => {
+      const cls = t.outcome === 'WIN' ? 'positive' : 'negative';
+      const returnPct = t.position_size > 0 ? (t.net_pnl / t.position_size * 100) : 0;
+      html += `<tr>
+        <td>${t.asset} ${t.direction}</td>
+        <td class="${cls}">${t.outcome}</td>
+        <td class="${cls}">${fmtUsd(t.net_pnl)}</td>
+        <td class="${cls}">${fmt(returnPct, 1)}%</td>
+      </tr>`;
+    });
+    html += '</table>';
+    $('bot-closed').innerHTML = html;
+  } else {
+    $('bot-closed').innerHTML = '<div class="no-data">No closed trades yet</div>';
+  }
+
+  // Live log
+  const logLines = data.live_log || [];
+  if (logLines.length > 0) {
+    $('bot-live-log').innerHTML = logLines.map(line => {
+      let cls = 'log-line-info';
+      if (/\[ERROR\]|\[CRITICAL\]/.test(line)) cls = 'log-line-error';
+      else if (/\[WARNING\]/.test(line)) cls = 'log-line-warn';
+      else if (/LIVE ORDER|Trade #\d+ closed/.test(line)) cls = 'log-line-trade';
+      const escaped = line.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return `<div class="log-line ${cls}">${escaped}</div>`;
     }).join('');
-  }else{
-    ap.innerHTML='<div style="color:var(--muted)">No live allocations</div>';
+    // Auto-scroll to bottom
+    const el = $('bot-live-log');
+    el.scrollTop = el.scrollHeight;
+  } else {
+    $('bot-live-log').innerHTML = '<div class="no-data">No log data</div>';
   }
-
-  const ll=document.getElementById('learning-loop');
-  ll.innerHTML='<div class="stat-row"><span class="stat-label">Trades logged</span><span>'+(d.total_trades||0)+'</span></div>'
-    +'<div class="stat-row"><span class="stat-label">Strategies tracked</span><span>'+(d.strategies_tracked||0)+'</span></div>'
-    +'<div class="stat-row"><span class="stat-label">Last analysis</span><span>'+(d.last_analyzed||'&mdash;')+'</span></div>'
-    +'<div class="stat-row"><span class="stat-label">Next allocation</span><span>'+(d.next_allocation||'&mdash;')+'</span></div>';
 }
 
-loadData();
-setInterval(loadData,60000);
+// ── Render: EdgeLab tab ──
+function renderEdgeLabTab(data) {
+  const edge = data.edge || {};
+  const mode = edge.mode || 'PAPER';
+  const badge = $('edge-mode-badge');
+  badge.textContent = mode;
+  badge.className = 'mode-badge ' + (mode === 'LIVE' ? 'mode-live' : 'mode-paper');
+  $('edge-go-live-btn').disabled = !edge.available;
+
+  // Scan Status
+  const scan = edge.scan_status || {};
+  renderStatsLg($('edge-scan-stats'), [
+    ['Last Scan', scan.last_scan || 'No data', 'neutral'],
+    ['Markets Scanned', scan.markets_scanned || 0, 'neutral'],
+    ['Signals Found', scan.signals_found || 0, scan.signals_found > 0 ? 'positive' : 'neutral'],
+    ['Process', edge.process_running ? 'RUNNING' : 'OFFLINE', edge.process_running ? 'positive' : 'negative'],
+  ]);
+
+  // Feeds
+  const feeds = edge.feeds || [];
+  if (feeds.length > 0) {
+    let html = '<table><tr><th>Feed</th><th>Status</th><th>Detail</th></tr>';
+    feeds.forEach(f => {
+      const cls = f.status === 'ACTIVE' ? 'positive' : f.status === 'MOCK' ? 'warn' : f.status === 'ERROR' ? 'negative' : 'neutral';
+      // Extract just the useful part from detail
+      const detailMatch = (f.detail || '').match(/INFO:\s*(.+)/);
+      const detail = detailMatch ? detailMatch[1] : (f.detail || '').slice(-80);
+      html += '<tr><td>' + f.name + '</td><td class="' + cls + '">' + f.status + '</td><td style="color:var(--text-dim);font-size:11px">' + detail + '</td></tr>';
+    });
+    html += '</table>';
+    $('edge-feeds').innerHTML = html;
+  } else {
+    $('edge-feeds').innerHTML = '<div class="no-data">No feed data — strategy may not be running</div>';
+  }
+
+  // Paper P&L
+  const isPaper = mode !== 'LIVE';
+  renderStats($('edge-pnl-stats'), [
+    [isPaper ? 'Paper Balance' : 'Balance', '$' + fmt(edge.bankroll), 'neutral'],
+    ['Today P&L', fmtUsd(edge.today_pnl), pnlClass(edge.today_pnl)],
+    ['Total P&L', fmtUsd(edge.total_pnl), pnlClass(edge.total_pnl)],
+    ['Deployed', '$' + fmt(edge.total_deployed), 'neutral'],
+    ['Trades', edge.trade_count || 0, 'neutral'],
+    ['Win Rate', fmt(edge.win_rate || 0, 1) + '%', (edge.win_rate || 0) > 50 ? 'positive' : 'neutral'],
+  ]);
+  if (isPaper && edge.trade_count === 0) {
+    $('edge-pnl-stats').innerHTML += '<div style="grid-column:1/-1;padding:8px;color:var(--text-dim);font-size:11px;font-style:italic">Paper mode \u2014 no trades placed yet. Feeds are scanning for opportunities.</div>';
+  }
+
+  // Signals (recent trades or "no signals" message)
+  const trades = edge.recent_trades || [];
+  if (trades.length > 0) {
+    let html = '<table><tr><th>Market</th><th>Strategy</th><th>Edge %</th><th>Size</th><th>Status</th><th>P&L</th><th>Time</th></tr>';
+    trades.forEach(t => {
+      const cls = t.pnl > 0 ? 'positive' : t.pnl < 0 ? 'negative' : 'neutral';
+      html += '<tr><td>' + (t.market_id || '').slice(0,30) + '</td><td>' + (t.strategy || '') + '</td><td>' + fmt((t.entry_prob || 0) * 100, 1) + '%</td><td>$' + fmt(t.size) + '</td><td>' + (t.status || '') + '</td><td class="' + cls + '">' + fmtUsd(t.pnl || 0) + '</td><td style="color:var(--text-dim)">' + (t.timestamp || '') + '</td></tr>';
+    });
+    html += '</table>';
+    $('edge-signals').innerHTML = html;
+  } else {
+    $('edge-signals').innerHTML = '<div class="no-data">No opportunities detected yet. Strategies are scanning ' + (scan.markets_scanned || 0) + ' markets across active feeds.</div>';
+  }
+
+  // EdgeLab Log
+  const logLines = data.edge_log || [];
+  if (logLines.length > 0) {
+    $('edge-live-log').innerHTML = logLines.map(line => {
+      let cls = 'log-line-info';
+      if (/\[ERROR\]|\[CRITICAL\]|error/i.test(line)) cls = 'log-line-error';
+      else if (/\[WARNING\]|warning/i.test(line)) cls = 'log-line-warn';
+      else if (/opportunity|signal|trade/i.test(line)) cls = 'log-line-trade';
+      const escaped = line.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return '<div class="log-line ' + cls + '">' + escaped + '</div>';
+    }).join('');
+    const el = $('edge-live-log');
+    el.scrollTop = el.scrollHeight;
+  } else {
+    $('edge-live-log').innerHTML = '<div class="no-data">No log data</div>';
+  }
+}
+
+// ── Render: Performance tab ──
+function renderPerformanceTab(data) {
+  const bot = data.bot || {};
+  const edge = data.edge || {};
+
+  const botPnl = bot.total_pnl || 0;
+  const edgePnl = edge.total_pnl || 0;
+  const combinedPnl = botPnl + edgePnl;
+  const botTodayPnl = bot.today_pnl || 0;
+  const edgeTodayPnl = edge.today_pnl || 0;
+
+  renderStats($('perf-combined-stats'), [
+    ['Combined Total P&L', fmtUsd(combinedPnl), pnlClass(combinedPnl)],
+    ['Bot Total P&L', fmtUsd(botPnl), pnlClass(botPnl)],
+    ['EdgeLab Total P&L', fmtUsd(edgePnl), pnlClass(edgePnl)],
+    ['Bot Today', fmtUsd(botTodayPnl), pnlClass(botTodayPnl)],
+    ['Bot Win Rate', fmt(bot.win_rate || 0, 1) + '%', (bot.win_rate || 0) >= 60 ? 'positive' : 'warn'],
+    ['Bot ROI', fmt(bot.roi_pct || 0) + '%', pnlClass(bot.roi_pct || 0)],
+    ['Total Trades', bot.total_trades || 0, 'neutral'],
+    ['W / L', (bot.wins || 0) + ' / ' + (bot.losses || 0), 'neutral'],
+  ]);
+
+  // Daily history table
+  const daily = bot.daily_history || [];
+  if (daily.length > 0) {
+    let html = '<table><tr><th>Date</th><th>Trades</th><th>W/L</th><th>Net P&L</th><th>Win Rate</th><th>Bankroll</th></tr>';
+    daily.forEach(d => {
+      const cls = (d.net_pnl || 0) >= 0 ? 'positive' : 'negative';
+      html += `<tr>
+        <td>${d.date_utc}</td>
+        <td>${d.trades}</td>
+        <td>${d.wins}/${d.losses}</td>
+        <td class="${cls}">${fmtUsd(d.net_pnl)}</td>
+        <td>${fmt(d.win_rate * 100, 0)}%</td>
+        <td>$${fmt(d.bankroll_close)}</td>
+      </tr>`;
+    });
+    html += '</table>';
+    $('perf-daily-table').innerHTML = html;
+  } else {
+    $('perf-daily-table').innerHTML = '<div class="no-data">No daily history yet</div>';
+  }
+
+  // Alerts
+  const alerts = data.alerts || [];
+  if (alerts.length > 0) {
+    $('perf-alerts').innerHTML = alerts.map(a =>
+      `<div class="alert-row">
+        <span class="alert-ts">${a.ts || '\u2014'}</span>
+        <span class="alert-src alert-src-${a.source}">${a.source}</span>
+        <span class="alert-level-${a.level}" style="min-width:40px">${a.level}</span>
+        <span class="alert-msg">${a.message}</span>
+      </div>`
+    ).join('');
+  } else {
+    $('perf-alerts').innerHTML = '<div class="no-data">No recent alerts</div>';
+  }
+}
+
+// ── Render: Risk tab ──
+function renderRiskTab(data) {
+  const risk = data.risk || {};
+  const bot = data.bot || {};
+
+  renderStats($('risk-stats'), [
+    ['Total Capital', '$' + fmt(risk.total_capital), 'neutral'],
+    ['Total Deployed', '$' + fmt(risk.total_deployed), risk.deploy_pct > 70 ? 'warn' : 'neutral'],
+    ['Deploy %', fmt(risk.deploy_pct, 1) + '%', risk.deploy_pct > 70 ? 'warn' : 'neutral'],
+    ['Bot Capital', '$' + fmt(risk.bot_capital), 'neutral'],
+    ['Bot Deployed', '$' + fmt(risk.bot_deployed), 'neutral'],
+    ['Edge (Paper)', '$' + fmt(risk.edge_capital), 'neutral'],
+    ['Edge Deployed', '$' + fmt(risk.edge_deployed), 'neutral'],
+  ]);
+
+  // Circuit breakers
+  const halted = bot.halted || false;
+  const dailyLoss = bot.daily_loss || 0;
+  $('risk-breakers').innerHTML = `
+    <table>
+      <tr><th>Breaker</th><th>Status</th><th>Value</th></tr>
+      <tr>
+        <td>Bot Halt Flag</td>
+        <td class="${halted ? 'negative' : 'positive'}">${halted ? 'TRIGGERED' : 'OK'}</td>
+        <td>${halted ? bot.halt_reason || 'Manual halt' : 'Not triggered'}</td>
+      </tr>
+      <tr>
+        <td>Bot Daily Loss Limit</td>
+        <td class="${dailyLoss > 5 ? 'negative' : dailyLoss > 3 ? 'warn' : 'positive'}">${dailyLoss > 5 ? 'NEAR LIMIT' : 'OK'}</td>
+        <td>$${fmt(dailyLoss, 4)} used</td>
+      </tr>
+      <tr>
+        <td>Bot Process</td>
+        <td class="${bot.process_running ? 'positive' : 'negative'}">${bot.process_running ? 'RUNNING' : 'STOPPED'}</td>
+        <td>${bot.process_running ? 'live_engine.py active' : 'Process not found'}</td>
+      </tr>
+    </table>
+  `;
+
+  // Signals
+  if (bot.recent_signals && bot.recent_signals.length > 0) {
+    let html = '<table><tr><th>Time</th><th>Asset</th><th>Dir</th><th>Mom%</th><th>Strength</th><th>Gate</th></tr>';
+    bot.recent_signals.forEach(s => {
+      const gateClass = s.gate_result === 'PASS' ? 'positive' : 'negative';
+      html += `<tr>
+        <td>${fmtTs(s.ts)}</td>
+        <td>${s.asset}</td>
+        <td>${s.direction}</td>
+        <td>${fmt(s.momentum_pct, 4)}%</td>
+        <td>${s.signal_strength}</td>
+        <td class="${gateClass}">${s.gate_result}</td>
+      </tr>`;
+    });
+    html += '</table>';
+    $('risk-signals').innerHTML = html;
+  } else {
+    $('risk-signals').innerHTML = '<div class="no-data">No recent signals</div>';
+  }
+}
+
+// ── Render: Framework tab ──
+async function renderFrameworkTab() {
+  try {
+    const resp = await fetch('/api/framework');
+    if (!resp.ok) { $('fw-strategies').innerHTML = '<div class="no-data">Framework DB not available</div>'; return; }
+    const fw = await resp.json();
+    $('fw-status').textContent = 'Last analyzed: ' + (fw.last_analyzed || 'never');
+
+    // Strategy table
+    if (fw.strategies && fw.strategies.length > 0) {
+      let html = '<table><tr><th>Strategy</th><th>Win Rate</th><th>P&L</th><th>Trades</th><th>Last Updated</th></tr>';
+      fw.strategies.forEach(s => {
+        const wrClass = s.win_rate >= 0.6 ? 'positive' : s.win_rate >= 0.45 ? 'warn' : 'negative';
+        html += `<tr>
+          <td>${s.name}</td>
+          <td class="${wrClass}">${(s.win_rate * 100).toFixed(1)}%</td>
+          <td class="${s.total_pnl >= 0 ? 'positive' : 'negative'}">${fmtUsd(s.total_pnl)}</td>
+          <td>${s.trades}</td>
+          <td>${fmtTs(s.last_updated)}</td>
+        </tr>`;
+      });
+      html += '</table>';
+      $('fw-strategies').innerHTML = html;
+    } else {
+      $('fw-strategies').innerHTML = '<div class="no-data">No strategies tracked yet</div>';
+    }
+
+    // Allocations
+    if (fw.capital_allocations && fw.capital_allocations.length > 0) {
+      let html = '<table><tr><th>Strategy</th><th>Allocation %</th><th>Allocation $</th></tr>';
+      fw.capital_allocations.forEach(a => {
+        html += `<tr><td>${a.strategy}</td><td>${(a.allocated_pct * 100).toFixed(1)}%</td><td>$${fmt(a.allocated_usd)}</td></tr>`;
+      });
+      html += '</table>';
+      $('fw-allocations').innerHTML = html;
+    } else {
+      $('fw-allocations').innerHTML = '<div class="no-data">No allocations yet</div>';
+    }
+
+    // Suggestions
+    if (fw.recent_suggestions && fw.recent_suggestions.length > 0) {
+      $('fw-suggestions').innerHTML = '<ul style="padding-left:16px">' + fw.recent_suggestions.map(s => `<li style="margin:4px 0">${s}</li>`).join('') + '</ul>';
+    } else {
+      $('fw-suggestions').innerHTML = '<div class="no-data">No suggestions — all strategies within bounds</div>';
+    }
+  } catch(e) {
+    $('fw-strategies').innerHTML = '<div class="no-data">Error loading framework data</div>';
+  }
+}
+
+// ── Render: News Arb tab ──
+async function renderNewsArbTab() {
+  try {
+    const resp = await fetch('/api/news_arb');
+    const na = await resp.json();
+
+    // Mode badge
+    const badge = $('na-mode-badge');
+    badge.textContent = na.mode;
+    badge.className = 'nav-badge ' + (na.mode === 'LIVE' ? 'badge-live' : 'badge-paper');
+
+    // Sidebar badge
+    const navBadge = $('nav-newsarb-badge');
+    navBadge.textContent = na.status;
+    navBadge.className = 'nav-badge ' + (na.status === 'RUNNING' ? 'badge-running' : 'badge-stopped');
+
+    // Stats
+    renderStatsLg($('na-stats'), [
+      ['Mode', na.mode, 'neutral'],
+      ['Status', na.status, na.status === 'RUNNING' ? 'positive' : 'negative'],
+      ['Paper Trades', na.paper_trades, 'neutral'],
+      ['Win Rate', (na.paper_win_rate * 100).toFixed(1) + '%', na.paper_win_rate >= 0.55 ? 'positive' : 'warn'],
+      ['Paper P&L', fmtUsd(na.paper_pnl), pnlClass(na.paper_pnl)],
+    ]);
+
+    // Signals
+    if (na.recent_signals && na.recent_signals.length > 0) {
+      let html = '<table><tr><th>Time</th><th>Market</th><th>Dir</th><th>Edge</th><th>Article</th></tr>';
+      na.recent_signals.forEach(s => {
+        html += `<tr>
+          <td>${fmtTs(s.timestamp)}</td>
+          <td>${s.market_id || '-'}</td>
+          <td>${s.direction || '-'}</td>
+          <td>${s.edge_pct ? (s.edge_pct * 100).toFixed(1) + '%' : '-'}</td>
+          <td style="max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.article_title || '-'}</td>
+        </tr>`;
+      });
+      html += '</table>';
+      $('na-signals').innerHTML = html;
+    } else {
+      $('na-signals').innerHTML = '<div class="no-data">No signals yet</div>';
+    }
+
+    // Promotion
+    $('na-promotion').innerHTML = na.promotion_eligible
+      ? '<span style="color:var(--green);font-weight:bold">ELIGIBLE — Strategy meets all live deployment criteria</span>'
+      : '<span style="color:var(--yellow)">Not yet eligible — collecting paper trade data</span>';
+  } catch(e) {
+    $('na-stats').innerHTML = '<div class="no-data">Error loading news arb data</div>';
+  }
+}
+
+// ── Render: Sports Momentum tab ──
+async function renderSportsMomentumTab() {
+  try {
+    const resp = await fetch('/api/sports_momentum');
+    const sm = await resp.json();
+
+    const badge = $('sm-mode-badge');
+    badge.textContent = sm.mode;
+    badge.className = 'nav-badge ' + (sm.mode === 'LIVE' ? 'badge-live' : 'badge-paper');
+
+    const navBadge = $('nav-sm-badge');
+    navBadge.textContent = sm.status;
+    navBadge.className = 'nav-badge ' + (sm.status === 'RUNNING' ? 'badge-running' : 'badge-stopped');
+
+    renderStatsLg($('sm-stats'), [
+      ['Mode', sm.mode, 'neutral'],
+      ['Status', sm.status, sm.status === 'RUNNING' ? 'positive' : 'negative'],
+      ['Paper Trades', sm.paper_trades, 'neutral'],
+      ['Win Rate', (sm.paper_win_rate * 100).toFixed(1) + '%', sm.paper_win_rate >= 0.55 ? 'positive' : 'warn'],
+      ['Paper P&L', fmtUsd(sm.paper_pnl), pnlClass(sm.paper_pnl)],
+    ]);
+
+    if (sm.active_sports && sm.active_sports.length > 0) {
+      $('sm-sports').innerHTML = sm.active_sports.map(s =>
+        '<span style="display:inline-block;padding:4px 12px;margin:4px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;color:var(--accent);text-transform:uppercase;font-size:11px;font-weight:600">' + s + '</span>'
+      ).join('');
+    } else {
+      $('sm-sports').innerHTML = '<div class="no-data">No active sports detected — waiting for live games</div>';
+    }
+
+    if (sm.recent_signals && sm.recent_signals.length > 0) {
+      let html = '<table><tr><th>Time</th><th>Sport</th><th>Game</th><th>Dir</th><th>Edge</th><th>Trigger</th></tr>';
+      sm.recent_signals.forEach(s => {
+        html += '<tr>' +
+          '<td>' + (s.timestamp || '-') + '</td>' +
+          '<td style="text-transform:uppercase">' + (s.sport || '-') + '</td>' +
+          '<td>' + (s.game || '-') + '</td>' +
+          '<td>' + (s.direction || '-') + '</td>' +
+          '<td>' + (s.edge_pct ? (s.edge_pct * 100).toFixed(1) + '%' : '-') + '</td>' +
+          '<td style="max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (s.trigger_reason || '-') + '</td>' +
+          '</tr>';
+      });
+      html += '</table>';
+      $('sm-signals').innerHTML = html;
+    } else {
+      $('sm-signals').innerHTML = '<div class="no-data">No signals yet — monitoring ESPN feeds</div>';
+    }
+
+    $('sm-promotion').innerHTML = sm.promotion_eligible
+      ? '<span style="color:var(--green);font-weight:bold">ELIGIBLE — Strategy meets all live deployment criteria</span>'
+      : '<span style="color:var(--yellow)">Not yet eligible — collecting paper trade data</span>';
+  } catch(e) {
+    $('sm-stats').innerHTML = '<div class="no-data">Error loading sports momentum data</div>';
+  }
+}
+
+// ── Render: Resolution Lag tab ──
+async function renderResolutionLagTab() {
+  try {
+    const resp = await fetch('/api/resolution_lag');
+    const rl = await resp.json();
+
+    const badge = $('rl-mode-badge');
+    badge.textContent = rl.mode;
+    badge.className = 'nav-badge ' + (rl.mode === 'LIVE' ? 'badge-live' : 'badge-paper');
+
+    const navBadge = $('nav-rl-badge');
+    navBadge.textContent = rl.status;
+    navBadge.className = 'nav-badge ' + (rl.status === 'RUNNING' ? 'badge-running' : 'badge-stopped');
+
+    renderStatsLg($('rl-stats'), [
+      ['Mode', rl.mode, 'neutral'],
+      ['Status', rl.status, rl.status === 'RUNNING' ? 'positive' : 'negative'],
+      ['Paper Trades', rl.paper_trades, 'neutral'],
+      ['Win Rate', (rl.paper_win_rate * 100).toFixed(1) + '%', rl.paper_win_rate >= 0.60 ? 'positive' : 'warn'],
+      ['Paper P&L', fmtUsd(rl.paper_pnl), pnlClass(rl.paper_pnl)],
+    ]);
+
+    renderStats($('rl-lag-stats'), [
+      ['Lag Frequency', fmt(rl.lag_frequency_pct, 1) + '%', rl.lag_frequency_pct > 10 ? 'positive' : 'neutral'],
+      ['Avg Lag Duration', fmt(rl.avg_lag_duration_min, 1) + ' min', 'neutral'],
+    ]);
+
+    if (rl.recent_signals && rl.recent_signals.length > 0) {
+      let html = '<table><tr><th>Time</th><th>Market</th><th>Edge</th><th>Certainty</th><th>Lag %</th></tr>';
+      rl.recent_signals.forEach(s => {
+        html += '<tr>' +
+          '<td>' + (s.timestamp || '-') + '</td>' +
+          '<td>' + (s.market_id || '-') + '</td>' +
+          '<td>' + (s.edge_pct ? (s.edge_pct * 100).toFixed(1) + '%' : '-') + '</td>' +
+          '<td>' + (s.certainty_score ? fmt(s.certainty_score * 100, 0) + '%' : '-') + '</td>' +
+          '<td>' + (s.lag_magnitude_pct ? (s.lag_magnitude_pct * 100).toFixed(1) + '%' : '-') + '</td>' +
+          '</tr>';
+      });
+      html += '</table>';
+      $('rl-signals').innerHTML = html;
+    } else {
+      $('rl-signals').innerHTML = '<div class="no-data">No signals yet — scanning for resolved events</div>';
+    }
+
+    $('rl-promotion').innerHTML = rl.promotion_eligible
+      ? '<span style="color:var(--green);font-weight:bold">ELIGIBLE — Strategy meets all live deployment criteria</span>'
+      : '<span style="color:var(--yellow)">Not yet eligible — collecting paper trade data</span>';
+  } catch(e) {
+    $('rl-stats').innerHTML = '<div class="no-data">Error loading resolution lag data</div>';
+  }
+}
+
+// ── Render: Master Overview tab ──
+async function renderMasterOverview() {
+  // Fetch all strategy data in parallel
+  let na = {}, sm = {}, rl = {}, fra = {}, lp = {};
+  try {
+    const [naR, smR, rlR, fraR, lpR] = await Promise.all([
+      fetch('/api/news_arb').then(r => r.json()).catch(() => ({})),
+      fetch('/api/sports_momentum').then(r => r.json()).catch(() => ({})),
+      fetch('/api/resolution_lag').then(r => r.json()).catch(() => ({})),
+      fetch('/api/funding_rate_arb').then(r => r.json()).catch(() => ({})),
+      fetch('/api/liquidity_provision').then(r => r.json()).catch(() => ({})),
+    ]);
+    na = naR; sm = smR; rl = rlR; fra = fraR; lp = lpR;
+  } catch(e) {}
+
+  const strategies = [
+    { name: 'News Arb', data: na },
+    { name: 'Sports Momentum', data: sm },
+    { name: 'Resolution Lag', data: rl },
+    { name: 'Funding Rate Arb', data: fra },
+    { name: 'Liquidity Prov.', data: lp },
+  ];
+
+  function statusBadge(s) {
+    const d = s.data;
+    const mode = d.mode || 'PAPER';
+    const status = d.status || 'STOPPED';
+    const wr = (d.paper_win_rate || 0) * 100;
+    const eligible = d.promotion_eligible || false;
+
+    if (status === 'RUNNING' && mode === 'LIVE' && (d.paper_pnl || 0) >= 0)
+      return '<span style="color:var(--green);font-weight:bold">LIVE+PROFIT</span>';
+    if (eligible)
+      return '<span style="color:var(--yellow);font-weight:bold">ELIGIBLE</span>';
+    if (mode === 'PAPER' && status === 'RUNNING')
+      return '<span style="color:var(--yellow)">PAPER</span>';
+    if (status === 'STOPPED')
+      return '<span style="color:var(--red)">STOPPED</span>';
+    return '<span style="color:var(--text-dim)">PAPER</span>';
+  }
+
+  let html = '<table><tr><th>Strategy</th><th>Mode</th><th>Win Rate</th><th>P&L</th><th>Trades</th><th>Status</th></tr>';
+  strategies.forEach(s => {
+    const d = s.data;
+    const mode = d.mode || 'PAPER';
+    const modeClass = mode === 'LIVE' ? 'positive' : 'warn';
+    const wr = ((d.paper_win_rate || 0) * 100).toFixed(1);
+    const wrClass = (d.paper_win_rate || 0) >= 0.55 ? 'positive' : (d.paper_win_rate || 0) >= 0.50 ? 'warn' : 'neutral';
+    const pnl = d.paper_pnl || 0;
+    html += '<tr>' +
+      '<td style="font-weight:bold">' + s.name + '</td>' +
+      '<td class="' + modeClass + '">' + mode + '</td>' +
+      '<td class="' + wrClass + '">' + wr + '%</td>' +
+      '<td class="' + pnlClass(pnl) + '">' + fmtUsd(pnl) + '</td>' +
+      '<td>' + (d.paper_trades || 0) + '</td>' +
+      '<td>' + statusBadge(s) + '</td>' +
+      '</tr>';
+  });
+  html += '</table>';
+  $('mo-strategy-grid').innerHTML = html;
+
+  // Portfolio summary
+  const totalPnl = strategies.reduce((acc, s) => acc + (s.data.paper_pnl || 0), 0);
+  const totalTrades = strategies.reduce((acc, s) => acc + (s.data.paper_trades || 0), 0);
+  const runningCount = strategies.filter(s => (s.data.status || '') === 'RUNNING').length;
+  const eligibleCount = strategies.filter(s => s.data.promotion_eligible).length;
+
+  renderStats($('mo-portfolio-stats'), [
+    ['Total P&L (All Strategies)', fmtUsd(totalPnl), pnlClass(totalPnl)],
+    ['Total Paper Trades', totalTrades, 'neutral'],
+    ['Running', runningCount + '/' + strategies.length, runningCount > 0 ? 'positive' : 'warn'],
+    ['Promotion Eligible', eligibleCount + '/' + strategies.length, eligibleCount > 0 ? 'positive' : 'neutral'],
+  ]);
+
+  // Capital allocation from framework
+  try {
+    const fw = await fetch('/api/framework').then(r => r.json()).catch(() => ({}));
+    if (fw.capital_allocations && fw.capital_allocations.length > 0) {
+      const allocItems = fw.capital_allocations.slice(0, 5).map(a =>
+        [a.strategy, '$' + fmt(a.allocated_usd) + ' (' + (a.allocated_pct * 100).toFixed(1) + '%)', 'neutral']
+      );
+      renderStats($('mo-capital-stats'), allocItems);
+    } else {
+      $('mo-capital-stats').innerHTML = '<div class="no-data" style="grid-column:1/-1">No allocations yet — framework needs trade data</div>';
+    }
+    $('mo-learning-loop').innerHTML = '<div style="padding:8px;color:var(--text-dim)">Last analyzed: ' + (fw.last_analyzed || 'never') + '</div>';
+  } catch(e) {
+    $('mo-capital-stats').innerHTML = '<div class="no-data" style="grid-column:1/-1">Framework unavailable</div>';
+  }
+
+  $('mo-status').textContent = 'Updated ' + new Date().toLocaleTimeString();
+}
+
+// ── Render: Funding Rate Arb tab ──
+async function renderFundingRateArbTab() {
+  try {
+    const resp = await fetch('/api/funding_rate_arb');
+    const fra = await resp.json();
+
+    const badge = $('fra-mode-badge');
+    badge.textContent = fra.mode;
+    badge.className = 'nav-badge ' + (fra.mode === 'LIVE' ? 'badge-live' : 'badge-paper');
+
+    const navBadge = $('nav-fra-badge');
+    navBadge.textContent = fra.status;
+    navBadge.className = 'nav-badge ' + (fra.status === 'RUNNING' ? 'badge-running' : 'badge-stopped');
+
+    renderStatsLg($('fra-stats'), [
+      ['Mode', fra.mode, 'neutral'],
+      ['Status', fra.status, fra.status === 'RUNNING' ? 'positive' : 'negative'],
+      ['Paper Trades', fra.paper_trades, 'neutral'],
+      ['Win Rate', (fra.paper_win_rate * 100).toFixed(1) + '%', fra.paper_win_rate >= 0.55 ? 'positive' : 'warn'],
+      ['Paper P&L', fmtUsd(fra.paper_pnl), pnlClass(fra.paper_pnl)],
+    ]);
+
+    // Funding rates
+    const rates = fra.current_funding_rates || {};
+    const rateKeys = Object.keys(rates);
+    if (rateKeys.length > 0) {
+      let html = '<table><tr><th>Asset</th><th>Funding Rate</th><th>Direction</th></tr>';
+      rateKeys.forEach(k => {
+        const r = rates[k];
+        const dir = r > 0.0005 ? 'BEARISH' : r < -0.0005 ? 'BULLISH' : 'NEUTRAL';
+        const cls = dir === 'BEARISH' ? 'negative' : dir === 'BULLISH' ? 'positive' : 'neutral';
+        html += '<tr><td>' + k + '</td><td>' + (r * 100).toFixed(4) + '%</td><td class="' + cls + '">' + dir + '</td></tr>';
+      });
+      html += '</table>';
+      $('fra-rates').innerHTML = html;
+    } else {
+      $('fra-rates').innerHTML = '<div class="no-data">No funding rate data yet</div>';
+    }
+
+    // Signals
+    if (fra.active_signals && fra.active_signals.length > 0) {
+      let html = '<table><tr><th>Time</th><th>Asset</th><th>Dir</th><th>Rate</th><th>Magnitude</th><th>Edge</th></tr>';
+      fra.active_signals.forEach(s => {
+        const dirCls = s.direction === 'BEARISH' ? 'negative' : 'positive';
+        html += '<tr>' +
+          '<td>' + (s.timestamp || '-') + '</td>' +
+          '<td>' + (s.asset || '-') + '</td>' +
+          '<td class="' + dirCls + '">' + (s.direction || '-') + '</td>' +
+          '<td>' + (s.funding_rate ? (s.funding_rate * 100).toFixed(4) + '%' : '-') + '</td>' +
+          '<td>' + (s.magnitude || '-') + '</td>' +
+          '<td>' + (s.edge_pct ? (s.edge_pct * 100).toFixed(1) + '%' : '-') + '</td>' +
+          '</tr>';
+      });
+      html += '</table>';
+      $('fra-signals').innerHTML = html;
+    } else {
+      $('fra-signals').innerHTML = '<div class="no-data">No signals yet — monitoring funding rates</div>';
+    }
+
+    $('fra-promotion').innerHTML = fra.promotion_eligible
+      ? '<span style="color:var(--green);font-weight:bold">ELIGIBLE — Strategy meets all live deployment criteria</span>'
+      : '<span style="color:var(--yellow)">Not yet eligible — collecting paper trade data</span>';
+  } catch(e) {
+    $('fra-stats').innerHTML = '<div class="no-data">Error loading funding rate arb data</div>';
+  }
+}
+
+// ── Render: Liquidity Provision tab ──
+async function renderLiquidityProvisionTab() {
+  try {
+    const resp = await fetch('/api/liquidity_provision');
+    const lp = await resp.json();
+
+    const badge = $('lp-mode-badge');
+    badge.textContent = lp.mode;
+    badge.className = 'nav-badge ' + (lp.mode === 'LIVE' ? 'badge-live' : 'badge-paper');
+
+    const navBadge = $('nav-lp-badge');
+    navBadge.textContent = lp.status;
+    navBadge.className = 'nav-badge ' + (lp.status === 'RUNNING' ? 'badge-running' : 'badge-stopped');
+
+    renderStatsLg($('lp-stats'), [
+      ['Mode', lp.mode, 'neutral'],
+      ['Status', lp.status, lp.status === 'RUNNING' ? 'positive' : 'negative'],
+      ['Paper Trades', lp.paper_trades, 'neutral'],
+      ['Win Rate', (lp.paper_win_rate * 100).toFixed(1) + '%', lp.paper_win_rate >= 0.52 ? 'positive' : 'warn'],
+      ['Paper P&L', fmtUsd(lp.paper_pnl), pnlClass(lp.paper_pnl)],
+      ['Spread Capture', (lp.spread_capture_rate * 100).toFixed(1) + '%', lp.spread_capture_rate >= 0.60 ? 'positive' : 'warn'],
+    ]);
+
+    renderStats($('lp-inventory-stats'), [
+      ['Active Quotes', lp.active_quotes || 0, 'neutral'],
+      ['Inventory USD', '$' + fmt(lp.current_inventory_usd), lp.current_inventory_usd > 25 ? 'warn' : 'neutral'],
+    ]);
+
+    $('lp-promotion').innerHTML = lp.promotion_eligible
+      ? '<span style="color:var(--green);font-weight:bold">ELIGIBLE — Strategy meets all live deployment criteria</span>'
+      : '<span style="color:var(--yellow)">Not yet eligible — collecting paper trade data</span>';
+  } catch(e) {
+    $('lp-stats').innerHTML = '<div class="no-data">Error loading liquidity provision data</div>';
+  }
+}
+
+// ── Sidebar badges ──
+function updateSidebarBadges(data) {
+  const bot = data.bot || {};
+  const edge = data.edge || {};
+
+  // EdgeLab badge
+  const edgeBadge = $('nav-edge-badge');
+  const edgeMode = edge.mode || 'PAPER';
+  edgeBadge.textContent = edgeMode;
+  edgeBadge.className = 'nav-badge ' + (edgeMode === 'LIVE' ? 'badge-live' : 'badge-paper');
+
+  // Bot badge
+  const botBadge = $('nav-bot-badge');
+  if (!bot.available) {
+    botBadge.textContent = 'OFFLINE';
+    botBadge.className = 'nav-badge badge-stopped';
+  } else if (bot.halted) {
+    botBadge.textContent = 'HALTED';
+    botBadge.className = 'nav-badge badge-stopped';
+  } else if (bot.process_running) {
+    botBadge.textContent = 'LIVE';
+    botBadge.className = 'nav-badge badge-running';
+  } else {
+    botBadge.textContent = 'STOPPED';
+    botBadge.className = 'nav-badge badge-stopped';
+  }
+}
+
+// ── Main refresh ──
+async function refresh() {
+  try {
+    const resp = await fetch('/api/data');
+    const data = await resp.json();
+    lastData = data;
+
+    updateSidebarBadges(data);
+    renderMasterOverview();
+    renderCapitalCommand(data);
+    renderEdgeLabTab(data);
+    renderBotTab(data);
+    renderPerformanceTab(data);
+    renderRiskTab(data);
+    renderFrameworkTab();
+    renderNewsArbTab();
+    renderSportsMomentumTab();
+    renderResolutionLagTab();
+    renderFundingRateArbTab();
+    renderLiquidityProvisionTab();
+
+    const now = new Date();
+    $('refresh-info').textContent = 'Updated ' + now.toLocaleTimeString();
+    $('cc-status').textContent = 'Last update: ' + now.toLocaleTimeString();
+  } catch (e) {
+    $('refresh-info').textContent = 'Connection error';
+    $('refresh-info').style.color = '#f85149';
+  }
+}
+
+// Initial load — fetch bundle first, then refresh
+(async () => {
+  await _loadBundle();
+  refresh();
+  setInterval(async () => { await _loadBundle(); refresh(); }, REFRESH_MS);
+})();
 </script>
 </body>
 </html>
