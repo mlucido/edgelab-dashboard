@@ -847,8 +847,36 @@
 </div>
 
 <script>
-const REFRESH_MS = 30000;
+const REFRESH_MS = 60000;
 let lastData = null;
+
+// ── Static mode: load all data from bundled data.json ──
+let _apiCache = {};
+async function _loadBundle() {
+  try {
+    const r = await fetch('data.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    _apiCache = await r.json();
+  } catch(e) {
+    console.warn('Failed to load data.json:', e);
+  }
+}
+const _origFetch = window.fetch;
+window.fetch = function(url, opts) {
+  if (typeof url === 'string' && url.startsWith('/api/')) {
+    const key = url.replace('/api/', '');
+    const data = _apiCache[key];
+    if (data !== undefined) {
+      return Promise.resolve({
+        ok: true, status: 200,
+        json: () => Promise.resolve(data),
+        text: () => Promise.resolve(JSON.stringify(data)),
+      });
+    }
+    return Promise.resolve({ ok: false, status: 404, json: () => Promise.resolve({}) });
+  }
+  return _origFetch.apply(this, arguments);
+};
 
 function $(id) { return document.getElementById(id); }
 
@@ -1782,9 +1810,12 @@ async function refresh() {
   }
 }
 
-// Initial load + auto-refresh
-refresh();
-setInterval(refresh, REFRESH_MS);
+// Initial load — fetch bundle first, then refresh
+(async () => {
+  await _loadBundle();
+  refresh();
+  setInterval(async () => { await _loadBundle(); refresh(); }, REFRESH_MS);
+})();
 </script>
 </body>
 </html>
