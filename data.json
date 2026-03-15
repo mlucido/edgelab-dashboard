@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T18:04:49.076095+00:00",
+    "ts": "2026-03-15T18:09:50.526912+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,34 +250,34 @@
       "win_rate": 0,
       "feeds": [
         {
-          "name": "CoinGecko",
-          "status": "ERROR",
-          "detail": "2026-03-15 11:04:47,704 [src.feeds.events] WARNING: CoinGecko 429 rate limited (attempt 2/4) \u2014 backing off 4s"
-        },
-        {
-          "name": "Polymarket REST",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 11:04:40,156 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
-        },
-        {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 11:04:38,439 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
-        },
-        {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:04:38,265 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 11:09:43,232 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:04:34,545 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 11:09:34,683 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+        },
+        {
+          "name": "CoinGecko",
+          "status": "CACHED",
+          "detail": "2026-03-15 11:08:53,272 [src.feeds.events] WARNING: CoinGecko: serving cached data (last fresh fetch succeeded earlier)"
+        },
+        {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 11:08:42,439 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+        },
+        {
+          "name": "Polymarket REST",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 11:08:39,074 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 11:04:40",
-        "markets_scanned": 500,
+        "last_scan": "2026-03-15 11:08:42",
+        "markets_scanned": 1000,
         "signals_found": 0
       },
       "circuit_breaker": {
@@ -540,5 +540,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T18:04:49.173247+00:00"
+  "_exported_at": "2026-03-15T18:09:50.632645+00:00"
 }
