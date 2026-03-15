@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T21:17:29.393521+00:00",
+    "ts": "2026-03-15T21:22:31.161950+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -252,31 +252,26 @@
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 14:17:20,195 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 14:22:18,293 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "CoinGecko",
-          "status": "ERROR",
-          "detail": "2026-03-15 14:16:46,264 [src.feeds.events] WARNING: CoinGecko 429 rate limited (attempt 3/4) \u2014 backing off 8s"
+          "status": "CACHED",
+          "detail": "2026-03-15 14:22:16,781 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
           "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 14:15:29,630 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 14:22:06,266 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 14:14:53,572 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
-        },
-        {
-          "name": "NewsAPI",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 14:09:50,740 [src.feeds.events] INFO: NewsAPI poll: 28 articles published"
+          "detail": "2026-03-15 14:21:39,681 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 14:15:29",
+        "last_scan": "2026-03-15 14:22:06",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -346,8 +341,8 @@
     "mode": "PAPER",
     "status": "RUNNING",
     "paper_trades": 40,
-    "paper_win_rate": 0.973,
-    "paper_pnl": 340.86,
+    "paper_win_rate": 0.975,
+    "paper_pnl": 369.69,
     "recent_signals": [
       {
         "timestamp": "2026-03-15T20:48:15.529646+00:00",
@@ -466,5 +461,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T21:17:29.628724+00:00"
+  "_exported_at": "2026-03-15T21:22:31.327347+00:00"
 }
