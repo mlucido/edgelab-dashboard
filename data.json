@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T18:31:31.947614+00:00",
+    "ts": "2026-03-15T18:36:33.436095+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -252,31 +252,31 @@
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 11:31:25,770 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
-        },
-        {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 11:31:16,352 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 11:36:26,026 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:31:06,577 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 11:36:12,508 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+        },
+        {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 11:35:39,184 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:30:53,127 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 11:35:19,219 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         },
         {
           "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:29:35,701 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 11:34:35,866 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 11:31:16",
+        "last_scan": "2026-03-15 11:35:39",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -353,8 +353,8 @@
     "mode": "PAPER",
     "status": "RUNNING",
     "paper_trades": 17,
-    "paper_win_rate": 0.0,
-    "paper_pnl": 0.0,
+    "paper_win_rate": 0.9412,
+    "paper_pnl": 148.66,
     "recent_signals": [
       {
         "timestamp": "2026-03-15T18:12:56.751054+00:00",
@@ -473,5 +473,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T18:31:32.065447+00:00"
+  "_exported_at": "2026-03-15T18:36:33.577792+00:00"
 }
