@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T20:22:05.933785+00:00",
+    "ts": "2026-03-15T20:27:07.683506+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,29 +250,34 @@
       "win_rate": 0,
       "feeds": [
         {
-          "name": "ESPN Events",
+          "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:22:05,770 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 13:27:03,439 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 13:22:02,292 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+          "detail": "2026-03-15 13:27:03,227 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+        },
+        {
+          "name": "ESPN Events",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 13:26:58,541 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:21:52,782 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 13:26:45,171 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         },
         {
-          "name": "Kalshi Live",
+          "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:21:44,331 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 13:24:43,710 [src.feeds.events] INFO: NewsAPI poll: 27 articles published"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 13:21:52",
-        "markets_scanned": 500,
+        "last_scan": "2026-03-15 13:27:03",
+        "markets_scanned": 1000,
         "signals_found": 0
       },
       "circuit_breaker": {
@@ -461,5 +466,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T20:22:06.058764+00:00"
+  "_exported_at": "2026-03-15T20:27:07.811551+00:00"
 }
