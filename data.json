@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-03-15T17:36:19.195816+00:00",
+  "exported_at": "2026-03-15T17:41:20.438131+00:00",
   "bot_bankroll": 497.4,
   "total_capital": 522.4,
   "today_pnl": 0,
@@ -106,6 +106,6 @@
   ],
   "total_trades": 42,
   "strategies_tracked": 3,
-  "last_analyzed": "17:36 UTC",
+  "last_analyzed": "17:41 UTC",
   "next_allocation": "09:00 UTC tomorrow"
 }
