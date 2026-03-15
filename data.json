@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T18:15:34.530529+00:00",
+    "ts": "2026-03-15T18:16:27.350494+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -251,23 +251,23 @@
       "feeds": [
         {
           "name": "CoinGecko",
-          "status": "ERROR",
-          "detail": "2026-03-15 11:15:30,923 [src.feeds.events] WARNING: CoinGecko 429 rate limited (attempt 3/4) \u2014 backing off 8s"
+          "status": "CACHED",
+          "detail": "2026-03-15 11:16:24,998 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+        },
+        {
+          "name": "ESPN Events",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 11:16:19,285 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+        },
+        {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 11:16:15,586 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
           "detail": "2026-03-15 11:15:23,795 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
-        },
-        {
-          "name": "ESPN Events",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 11:15:18,520 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
-        },
-        {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 11:15:14,360 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "NewsAPI",
@@ -276,8 +276,8 @@
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 11:15:23",
-        "markets_scanned": 500,
+        "last_scan": "2026-03-15 11:16:15",
+        "markets_scanned": 1000,
         "signals_found": 0
       },
       "circuit_breaker": {
@@ -557,5 +557,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T18:15:34.636736+00:00"
+  "_exported_at": "2026-03-15T18:16:27.457937+00:00"
 }
