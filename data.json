@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T20:47:16.243855+00:00",
+    "ts": "2026-03-15T20:52:19.438091+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -252,31 +252,26 @@
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 13:47:08,834 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
-        },
-        {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 13:46:47,076 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 13:52:14,301 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:46:45,259 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 13:51:51,314 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+        },
+        {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 13:50:10,915 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:46:03,706 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
-        },
-        {
-          "name": "NewsAPI",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 13:39:45,668 [src.feeds.events] INFO: NewsAPI poll: 27 articles published"
+          "detail": "2026-03-15 13:49:12,562 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 13:46:47",
+        "last_scan": "2026-03-15 13:50:10",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -436,83 +431,83 @@
   "news_arb": {
     "mode": "PAPER",
     "status": "RUNNING",
-    "paper_trades": 27,
+    "paper_trades": 37,
     "paper_win_rate": 0.963,
     "paper_pnl": 244.76,
     "recent_signals": [
       {
-        "timestamp": "2026-03-15T20:29:52.686338+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026C24C81D3395-93ECBD68DF0",
+        "timestamp": "2026-03-15T20:48:15.528577+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026235ECE5CCB7-0BB80DA5214",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.686649+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20260B4689686CE-7A535B8D656",
+        "timestamp": "2026-03-15T20:48:15.529059+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026527B6086B51-D86CA66E62D",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.686732+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026B87D8B2124C-4BCA0C014EE",
+        "timestamp": "2026-03-15T20:48:15.529507+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20260560657EDF3-CDA277DCAFC",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.686811+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026EB734C06AC6-C87CA82D171",
+        "timestamp": "2026-03-15T20:48:15.529646+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026162C481B3BD-6E2C8FAAED5",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.686890+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026B9AAD02044E-041D55604F3",
+        "timestamp": "2026-03-15T20:48:15.529754+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S202659AEDAD8186-822B13C7416",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.687040+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202660B5046AA9F-298C8D7B9F6",
+        "timestamp": "2026-03-15T20:48:15.530026+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20266CF0C950D63-746759D7CB1",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.687276+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S20268E5D7477706-934931360DA",
+        "timestamp": "2026-03-15T20:48:15.530345+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026007DBDFE506-F0DB28898DB",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.687474+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20266EF599048AB-56486152405",
+        "timestamp": "2026-03-15T20:48:15.530633+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20260641B632038-2DC6CC405FE",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.687579+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026D1B39DDA3CA-991A2BC29CC",
+        "timestamp": "2026-03-15T20:48:15.530999+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A2D5A087368-ADB6EA9200D",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       },
       {
-        "timestamp": "2026-03-15T20:29:52.687668+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026114C770A725-8CEEDD6904C",
+        "timestamp": "2026-03-15T20:48:15.531498+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026EB135FE1CC5-801F6D07417",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
+        "article_title": "Vanderbilt vs. Arkansas odds, prediction, time: 2026 SEC Tournament championship game picks from proven model - CBS Sports"
       }
     ],
     "promotion_eligible": false,
-    "last_signal": "2026-03-15T20:29:52.687668+00:00"
+    "last_signal": "2026-03-15T20:48:15.531498+00:00"
   },
   "sports_momentum": {
     "mode": "PAPER",
@@ -557,5 +552,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T20:47:16.372685+00:00"
+  "_exported_at": "2026-03-15T20:52:19.590281+00:00"
 }
