@@ -1,0 +1,26 @@
+{
+  "run_date": "2026-03-15T01:50:23.531485+00:00",
+  "assets_tested": [
+    "BTC",
+    "ETH",
+    "SOL"
+  ],
+  "total_signals": 1,
+  "wins": 0,
+  "losses": 1,
+  "win_rate": 0.0,
+  "avg_edge_pct": 0.1014,
+  "total_simulated_pnl": -25.5,
+  "sharpe_estimate": 0.0,
+  "max_drawdown_pct": 0.0,
+  "asset_breakdown": {
+    "SOL": {
+      "trades": 1,
+      "wins": 0,
+      "win_rate": 0.0,
+      "total_pnl": -25.5
+    }
+  },
+  "promotion_eligible": false,
+  "promotion_reason": "win_rate 0.00% <= 52%; sharpe 0.00 <= 0.8; trades 1 < 20"
+}

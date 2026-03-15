@@ -1,0 +1,51 @@
+{
+  "run_date": "2026-03-14T23:21:20.120567+00:00",
+  "period": "last_90_days",
+  "total_markets_analyzed": 300,
+  "markets_with_lag": 233,
+  "markets_no_lag": 67,
+  "lag_frequency_pct": 77.67,
+  "avg_lag_duration_min": 17.45,
+  "avg_lag_magnitude": 0.1936,
+  "avg_edge_pct": 0.1736,
+  "simulated_trades": 233,
+  "wins": 194,
+  "losses": 39,
+  "win_rate": 0.8326,
+  "total_pnl": 300.01,
+  "sharpe_estimate": 0.3,
+  "max_drawdown_pct": 3.1342,
+  "best_categories": [
+    {
+      "category": "sports",
+      "trades": 70,
+      "win_rate": 0.857,
+      "total_pnl": 109.38,
+      "avg_lag_magnitude": 0.198
+    },
+    {
+      "category": "politics",
+      "trades": 82,
+      "win_rate": 0.854,
+      "total_pnl": 101.99,
+      "avg_lag_magnitude": 0.185
+    },
+    {
+      "category": "crypto",
+      "trades": 31,
+      "win_rate": 0.871,
+      "total_pnl": 52.37,
+      "avg_lag_magnitude": 0.197
+    },
+    {
+      "category": "economics",
+      "trades": 50,
+      "win_rate": 0.74,
+      "total_pnl": 36.27,
+      "avg_lag_magnitude": 0.2
+    }
+  ],
+  "promotion_eligible": true,
+  "promotion_reason": "All criteria met",
+  "warnings": []
+}

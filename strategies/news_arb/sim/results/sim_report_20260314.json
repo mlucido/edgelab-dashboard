@@ -1,0 +1,33 @@
+{
+  "run_date": "2026-03-14T23:04:39.708288+00:00",
+  "period": "last_30_days",
+  "articles_processed": 30,
+  "articles_matched_to_market": 4,
+  "market_moved_after_news": 5,
+  "simulated_trades": 7,
+  "wins": 5,
+  "losses": 2,
+  "win_rate": 0.7143,
+  "avg_edge_pct": 0.45,
+  "total_simulated_pnl": 17.38,
+  "sharpe_estimate": 0.783,
+  "max_drawdown_pct": 0.1645,
+  "best_performing_categories": [
+    {
+      "category": "economic",
+      "trades": 7,
+      "pnl": 17.38,
+      "wins": 5
+    }
+  ],
+  "worst_performing_categories": [
+    {
+      "category": "economic",
+      "trades": 7,
+      "pnl": 17.38,
+      "wins": 5
+    }
+  ],
+  "promotion_eligible": false,
+  "promotion_reason": "sharpe 0.78 <= 0.8; trades 7 < 30"
+}

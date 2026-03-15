@@ -1,0 +1,37 @@
+{
+  "run_date": "2026-03-15T01:50:15.505295+00:00",
+  "period": "last_90_days",
+  "total_markets_analyzed": 1400,
+  "markets_with_lag": 857,
+  "markets_no_lag": 543,
+  "lag_frequency_pct": 61.21,
+  "avg_lag_duration_min": 15.63,
+  "avg_lag_magnitude": 0.1721,
+  "avg_edge_pct": 0.1521,
+  "simulated_trades": 857,
+  "wins": 656,
+  "losses": 201,
+  "win_rate": 0.7655,
+  "total_pnl": 72.58,
+  "sharpe_estimate": 0.02,
+  "max_drawdown_pct": 5.3854,
+  "best_categories": [
+    {
+      "category": "politics",
+      "trades": 853,
+      "win_rate": 0.767,
+      "total_pnl": 82.82,
+      "avg_lag_magnitude": 0.172
+    },
+    {
+      "category": "economics",
+      "trades": 4,
+      "win_rate": 0.5,
+      "total_pnl": -10.24,
+      "avg_lag_magnitude": 0.153
+    }
+  ],
+  "promotion_eligible": true,
+  "promotion_reason": "All criteria met",
+  "warnings": []
+}

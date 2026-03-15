@@ -1,0 +1,16 @@
+[
+  {
+    "asset": "SOL",
+    "timestamp_ms": 1769904000000,
+    "funding_rate": -0.0005631656394551,
+    "direction": "BULLISH",
+    "magnitude": "ELEVATED",
+    "confidence": "MEDIUM",
+    "rate_zscore": -4.332,
+    "price_at_signal": 105.44,
+    "price_after_window": 105.07,
+    "pct_change": -0.3509,
+    "outcome": "LOSS",
+    "pnl": -25.5
+  }
+]

@@ -1,0 +1,71 @@
+cd ~/Dropbox/EdgeLab/polymarket-sim && source ../.venv/bin/activate && caffeinate python main.pycd ~/Dropbox/EdgeLab/polymarket-sim && source ../.venv/bin/activate && caffeinate python main.py"""
+config.py — All tunable parameters for the Polymarket Lag Arb Sim.
+Change thresholds here; nothing else needs to be touched.
+"""
+
+# ── Bankroll ───────────────────────────────────────────────────────────────
+STARTING_BANKROLL      = 150.00   # USD — matches real Kalshi balance
+EMERGENCY_FLOOR_PCT    = 0.20     # halt if balance < 20% of starting bankroll
+DAILY_LOSS_HALT_PCT    = 0.05     # halt if daily loss > 5% of current bankroll
+MAX_POSITION_PCT       = 0.08     # max single position = 8% of bankroll
+MAX_DEPLOYED_PCT       = 0.70     # never have more than 70% in open positions
+MAX_OPEN_POSITIONS     = 5        # paranoia mode: max simultaneous open trades
+KELLY_FRACTION         = 0.25     # use 25% of full Kelly
+
+# ── Signal thresholds ─────────────────────────────────────────────────────
+MOMENTUM_WINDOW_SECS   = 45       # look-back window for momentum calculation
+MOMENTUM_MIN_PCT       = 0.40     # minimum % move to generate a signal
+VOLUME_MULTIPLIER      = 1.5      # 1-min volume must be > 1.5x rolling avg
+MIN_EDGE_PCT           = 0.10     # minimum edge over market price (10% = paranoia mode)
+MIN_MARKET_LIQUIDITY   = 500      # skip markets with < $500 total liquidity (lowered for Kalshi)
+MAX_BID_ASK_SPREAD     = 0.03     # skip markets where spread > 3%
+POLYMARKET_FEE         = 0.02     # 2% fee on winning trades
+
+# ── Trade management ──────────────────────────────────────────────────────
+STOP_LOSS_PCT          = 0.04     # exit early if unrealized loss > 4% of position
+REVERSAL_EXIT_PCT      = 0.005    # exit early if spot reverses 0.50% against us
+LOCK_PROFIT_SECS       = 90       # exit early if < 90s to resolution AND profitable
+STALE_DATA_SECS        = 3        # reject price data older than 3 seconds
+
+# ── Assets (Paranoia Mode: BTC only for first 30 days) ────────────────────
+ASSETS = ["BTC-USD"]              # add "ETH-USD", "SOL-USD" after validation
+COINBASE_WS_URL = "wss://advanced-trade-ws.coinbase.com"
+
+# ── Polymarket API ────────────────────────────────────────────────────────
+POLYMARKET_CLOB_URL    = "https://clob.polymarket.com"
+POLYMARKET_GAMMA_URL   = "https://gamma-api.polymarket.com"
+
+# ── Kalshi API ───────────────────────────────────────────────────────────
+KALSHI_API_URL         = "https://api.elections.kalshi.com/trade-api/v2"
+
+# ── Keyword filters for finding crypto lag markets on Polymarket ──────────
+# These match the short-duration BTC/ETH/SOL directional markets
+MARKET_KEYWORDS = [
+    "bitcoin", "btc", "ethereum", "eth", "solana", "sol",
+    "crypto", "higher", "above", "price"
+]
+# Markets must close within this many hours to be candidates
+MAX_MARKET_HOURS_TO_CLOSE = 2
+
+# ── Database ──────────────────────────────────────────────────────────────
+DB_PATH = "sim_results.db"
+
+# ── Dashboard refresh ─────────────────────────────────────────────────────
+DASHBOARD_REFRESH_SECS = 5
+
+# ── Logging ───────────────────────────────────────────────────────────────
+LOG_LEVEL = "INFO"
+LOG_FILE  = "sim.log"
+
+# ── Implied probability model ─────────────────────────────────────────────
+# Maps momentum strength to implied true probability of "higher in next N min"
+# Calibrated from historical BTC 15-min directional accuracy at various momentum levels
+# Format: (min_momentum_pct, max_momentum_pct) -> implied_probability
+MOMENTUM_PROB_TABLE = [
+    (0.40, 0.60, 0.62),   # weak signal  → 62% true prob
+    (0.60, 0.90, 0.68),   # medium       → 68% true prob
+    (0.90, 1.30, 0.74),   # strong       → 74% true prob
+    (1.30, 2.00, 0.80),   # very strong  → 80% true prob
+    (2.00, 99.0, 0.85),   # extreme      → 85% true prob
+]
+# For DOWN moves, implied prob applies to NO contract (same table, mirrored)

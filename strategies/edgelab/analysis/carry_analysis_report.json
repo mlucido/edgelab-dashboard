@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-03-15T21:21:36.916989+00:00",
+  "data_source": "synthetic",
+  "btc": {
+    "median_basis_apr": 10.59,
+    "bull_market_basis_apr_p75": 38.89,
+    "bear_market_basis_apr_p25": 4.09,
+    "negative_basis_pct": 0.0,
+    "days_above_8pct": 389,
+    "days_above_15pct": 170,
+    "sim_1x_annual_return_pct": 20.19,
+    "sim_1x_sharpe": 4.29,
+    "sim_1x_max_drawdown_pct": 0.0,
+    "sim_2x_annual_return_pct": 42.01,
+    "sim_2x_margin_call_pct": 5.11,
+    "optimal_entry_threshold_apr": 16.0
+  },
+  "eth": {
+    "median_basis_apr": 13.03,
+    "bull_market_basis_apr_p75": 44.46,
+    "bear_market_basis_apr_p25": 5.36,
+    "negative_basis_pct": 0.0,
+    "days_above_8pct": 405,
+    "days_above_15pct": 300,
+    "sim_1x_annual_return_pct": 17.35,
+    "sim_1x_sharpe": 2.55,
+    "sim_1x_max_drawdown_pct": 0.0,
+    "sim_2x_annual_return_pct": 36.33,
+    "sim_2x_margin_call_pct": 0.0,
+    "optimal_entry_threshold_apr": 7.0
+  },
+  "recommended_entry_threshold_apr": 12.0,
+  "recommended_max_leverage": 1.5,
+  "recommended_margin_buffer_pct": 35.0,
+  "summary": "Based on synthetic data, the carry trade shows a 3.4 Sharpe at 1x leverage with an optimal entry threshold of 12% APR. Recommended leverage: 1.5x with 35.0% margin buffer. Moderate leverage is viable with proper margin management."
+}
