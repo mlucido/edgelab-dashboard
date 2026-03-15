@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EdgeLab Command Center</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #141414;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --muted: #666;
+  --green: #00c853;
+  --yellow: #ffd600;
+  --orange: #ff6d00;
+  --red: #d50000;
+  --blue: #2979ff;
+  --mono: 'SF Mono','Monaco','Menlo','Fira Code',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13px;line-height:1.5}
+
+header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+h1{font-size:18px;color:var(--green);letter-spacing:2px}
+#last-updated{color:var(--muted);font-size:11px}
+
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:24px}
+@media(max-width:800px){.metrics{grid-template-columns:repeat(2,1fr)}}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;padding:0 24px 24px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px}
+.card h2{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+
+.metric-value{font-size:28px;font-weight:bold;color:var(--green)}
+.metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+table{width:100%;border-collapse:collapse}
+th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:8px;text-align:left;border-bottom:1px solid var(--border)}
+td{padding:8px;border-bottom:1px solid #1a1a1a;font-size:12px}
+
+.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:1px}
+.badge-live{background:#00c85318;color:var(--green);border:1px solid #00c85355}
+.badge-paper{background:#ffd60018;color:var(--yellow);border:1px solid #ffd60055}
+.badge-blocked{background:#d5000018;color:var(--red);border:1px solid #d5000055}
+.badge-running{background:#2979ff18;color:var(--blue);border:1px solid #2979ff55}
+.badge-stopped{background:#d5000018;color:var(--red);border:1px solid #d5000055}
+
+.pnl-pos{color:var(--green)}.pnl-neg{color:var(--red)}
+
+.signal-feed{max-height:220px;overflow-y:auto}
+.signal-item{padding:6px 0;border-bottom:1px solid #1a1a1a;font-size:11px}
+.signal-time{color:var(--muted);margin-right:8px}
+
+#alert-banner{display:none;background:var(--red);color:#fff;padding:12px 24px;text-align:center;font-weight:700;letter-spacing:1px}
+
+.stat-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #1a1a1a}
+.stat-label{color:var(--muted)}
+
+.bar-bg{background:#1a1a1a;height:6px;border-radius:3px;margin-top:6px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;background:var(--green);transition:width .5s}
+</style>
+</head>
+<body>
+
+<div id="alert-banner"></div>
+
+<header>
+  <h1>&#x2B21; EDGELAB COMMAND CENTER</h1>
+  <div id="last-updated">Loading...</div>
+</header>
+
+<div class="metrics">
+  <div class="card">
+    <h2>Total Capital</h2>
+    <div class="metric-value" id="total-capital">&mdash;</div>
+    <div class="metric-label">Deployed across live strategies</div>
+  </div>
+  <div class="card">
+    <h2>Today's P&amp;L</h2>
+    <div class="metric-value" id="today-pnl">&mdash;</div>
+    <div class="metric-label">All strategies combined</div>
+  </div>
+  <div class="card">
+    <h2>Strategies Live</h2>
+    <div class="metric-value" id="live-count">&mdash;</div>
+    <div class="metric-label">of 6 total strategies</div>
+  </div>
+  <div class="card">
+    <h2>Bot Bankroll</h2>
+    <div class="metric-value" id="bot-bankroll">&mdash;</div>
+    <div class="metric-label">Kalshi crypto momentum</div>
+  </div>
+</div>
+
+<div style="padding:0 24px 24px">
+  <div class="card">
+    <h2>All Strategies</h2>
+    <table>
+      <thead><tr><th>Strategy</th><th>Mode</th><th>Win Rate</th><th>P&amp;L</th><th>Trades</th><th>Capital</th><th>Status</th></tr></thead>
+      <tbody id="strategy-table"><tr><td colspan="7" style="color:var(--muted)">Loading...</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>Recent Signals</h2>
+    <div class="signal-feed" id="signal-feed"><div style="color:var(--muted)">Loading...</div></div>
+  </div>
+  <div class="card">
+    <h2>System Health</h2>
+    <div id="system-health">Loading...</div>
+  </div>
+  <div class="card">
+    <h2>Capital Allocation</h2>
+    <div id="capital-alloc">Loading...</div>
+  </div>
+  <div class="card">
+    <h2>Learning Loop</h2>
+    <div id="learning-loop">Loading...</div>
+  </div>
+</div>
+
+<footer style="padding:16px 24px;border-top:1px solid var(--border);color:var(--muted);font-size:10px;text-align:center">
+  EdgeLab &mdash; Automated trading research platform &mdash; Data updates every 5 minutes
+</footer>
+
+<script>
+async function loadData(){
+  try{
+    const r=await fetch('data.json?t='+Date.now());
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    render(await r.json());
+  }catch(e){
+    document.getElementById('last-updated').textContent='Error: '+e.message;
+  }
+}
+
+function badge(mode){
+  const c=mode==='LIVE'?'live':mode==='PAPER'?'paper':'blocked';
+  return '<span class="badge badge-'+c+'">'+mode+'</span>';
+}
+function statusBadge(s){
+  const c=s==='RUNNING'?'running':'stopped';
+  return '<span class="badge badge-'+c+'">'+s+'</span>';
+}
+function pnl(v){
+  if(v==null)return'<span style="color:var(--muted)">&mdash;</span>';
+  const c=v>=0?'pnl-pos':'pnl-neg';
+  return '<span class="'+c+'">$'+(v>=0?'+':'')+v.toFixed(2)+'</span>';
+}
+function wr(v){
+  if(!v)return'<span style="color:var(--muted)">&mdash;</span>';
+  const p=(v*100).toFixed(1)+'%';
+  const c=v>=0.6?'var(--green)':v>=0.5?'var(--yellow)':'var(--red)';
+  return '<span style="color:'+c+'">'+p+'</span>';
+}
+function ago(iso){
+  if(!iso)return'never';
+  const d=Math.floor((Date.now()-new Date(iso).getTime())/60000);
+  if(d<1)return'just now';
+  if(d<60)return d+'m ago';
+  return Math.floor(d/60)+'h '+d%60+'m ago';
+}
+
+function render(d){
+  document.getElementById('last-updated').textContent='Updated '+ago(d.exported_at);
+  if(d.circuit_breaker_active){
+    const b=document.getElementById('alert-banner');
+    b.style.display='block';
+    b.textContent='CIRCUIT BREAKER ACTIVE — CHECK SYSTEM';
+  }
+  document.getElementById('total-capital').textContent='$'+(d.total_capital||0).toFixed(2);
+  const tp=d.today_pnl||0;
+  document.getElementById('today-pnl').innerHTML=pnl(tp);
+  document.getElementById('today-pnl').style.color=tp>=0?'var(--green)':'var(--red)';
+  const liveN=(d.strategies||[]).filter(s=>s.mode==='LIVE').length;
+  document.getElementById('live-count').textContent=liveN+'/6';
+  document.getElementById('bot-bankroll').textContent='$'+(d.bot_bankroll||0).toFixed(2);
+
+  const tb=document.getElementById('strategy-table');
+  tb.innerHTML=(d.strategies||[]).map(s=>'<tr>'
+    +'<td>'+s.name+'</td>'
+    +'<td>'+badge(s.mode)+'</td>'
+    +'<td>'+wr(s.win_rate)+'</td>'
+    +'<td>'+pnl(s.pnl)+'</td>'
+    +'<td>'+(s.trades||0)+'</td>'
+    +'<td>'+(s.capital>0?'$'+s.capital.toFixed(0):'&mdash;')+'</td>'
+    +'<td>'+statusBadge(s.status)+'</td>'
+    +'</tr>').join('');
+
+  const sf=document.getElementById('signal-feed');
+  const sigs=(d.recent_signals||[]).slice(0,10);
+  sf.innerHTML=sigs.length?sigs.map(s=>'<div class="signal-item">'
+    +'<span class="signal-time">'+s.time+'</span>'
+    +'<strong>['+s.strategy+']</strong> '+s.market
+    +' &rarr; '+s.direction
+    +'</div>').join(''):'<div style="color:var(--muted)">No recent signals</div>';
+
+  const hp=document.getElementById('system-health');
+  hp.innerHTML=(d.processes||[]).map(p=>'<div class="stat-row">'
+    +'<span class="stat-label">'+p.name+'</span>'
+    +'<span style="color:'+(p.alive?'var(--green)':'var(--red)')+'">&#9679; '+(p.alive?'ALIVE':'DEAD')+'</span>'
+    +'</div>').join('');
+
+  const ap=document.getElementById('capital-alloc');
+  const allocs=(d.allocations||[]).filter(a=>a.amount>0);
+  if(allocs.length){
+    const total=allocs.reduce((s,a)=>s+a.amount,0);
+    ap.innerHTML=allocs.map(a=>{
+      const pct=total>0?(a.amount/total*100):0;
+      return '<div style="margin-bottom:8px">'
+        +'<div class="stat-row"><span class="stat-label">'+a.strategy+'</span><span>$'+a.amount.toFixed(0)+' ('+pct.toFixed(0)+'%)</span></div>'
+        +'<div class="bar-bg"><div class="bar-fill" style="width:'+pct+'%"></div></div>'
+        +'</div>';
+    }).join('');
+  }else{
+    ap.innerHTML='<div style="color:var(--muted)">No live allocations</div>';
+  }
+
+  const ll=document.getElementById('learning-loop');
+  ll.innerHTML='<div class="stat-row"><span class="stat-label">Trades logged</span><span>'+(d.total_trades||0)+'</span></div>'
+    +'<div class="stat-row"><span class="stat-label">Strategies tracked</span><span>'+(d.strategies_tracked||0)+'</span></div>'
+    +'<div class="stat-row"><span class="stat-label">Last analysis</span><span>'+(d.last_analyzed||'&mdash;')+'</span></div>'
+    +'<div class="stat-row"><span class="stat-label">Next allocation</span><span>'+(d.next_allocation||'&mdash;')+'</span></div>';
+}
+
+loadData();
+setInterval(loadData,60000);
+</script>
+</body>
+</html>

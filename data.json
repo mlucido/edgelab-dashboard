@@ -1,0 +1,118 @@
+{
+  "exported_at": "2026-03-15T17:21:01.025740+00:00",
+  "bot_bankroll": 497.4,
+  "total_capital": 522.4,
+  "today_pnl": 0,
+  "total_pnl": -2.4,
+  "circuit_breaker_active": false,
+  "strategies": [
+    {
+      "name": "Crypto Momentum",
+      "mode": "LIVE",
+      "win_rate": 0.0,
+      "pnl": -2.4,
+      "trades": 4,
+      "capital": 497.4,
+      "status": "RUNNING"
+    },
+    {
+      "name": "News Arb",
+      "mode": "LIVE",
+      "win_rate": 1.0,
+      "pnl": 1056.88,
+      "trades": 42,
+      "capital": 25.0,
+      "status": "RUNNING"
+    },
+    {
+      "name": "Sports Momentum",
+      "mode": "PAPER",
+      "win_rate": 0.0,
+      "pnl": 0.0,
+      "trades": 0,
+      "capital": 0,
+      "status": "RUNNING"
+    },
+    {
+      "name": "Resolution Lag",
+      "mode": "PAPER",
+      "win_rate": 0.0,
+      "pnl": 0.0,
+      "trades": 0,
+      "capital": 0,
+      "status": "RUNNING"
+    },
+    {
+      "name": "Funding Rate Arb",
+      "mode": "PAPER",
+      "win_rate": 0.0,
+      "pnl": 0.0,
+      "trades": 0,
+      "capital": 0,
+      "status": "RUNNING"
+    },
+    {
+      "name": "Liquidity Prov.",
+      "mode": "PAPER",
+      "win_rate": 0.0,
+      "pnl": 0.0,
+      "trades": 0,
+      "capital": 0,
+      "status": "RUNNING"
+    }
+  ],
+  "processes": [
+    {
+      "name": "bot (crypto)",
+      "alive": true
+    },
+    {
+      "name": "edgelab scanner",
+      "alive": false
+    },
+    {
+      "name": "news arb",
+      "alive": true
+    },
+    {
+      "name": "resolution lag",
+      "alive": true
+    },
+    {
+      "name": "sports momentum",
+      "alive": true
+    },
+    {
+      "name": "funding rate arb",
+      "alive": true
+    },
+    {
+      "name": "liquidity prov",
+      "alive": true
+    }
+  ],
+  "recent_signals": [
+    {
+      "time": "2026-03-15 10:02:37",
+      "strategy": "news arb",
+      "market": "KXMVESPORTSMULTIGAMEEXTENDED-S",
+      "direction": "YES"
+    }
+  ],
+  "allocations": [
+    {
+      "strategy": "Crypto Momentum",
+      "amount": 497.4,
+      "pct": 95.2
+    },
+    {
+      "strategy": "News Arb",
+      "amount": 25.0,
+      "pct": 4.8
+    }
+  ],
+  "total_trades": 42,
+  "strategies_tracked": 3,
+  "last_analyzed": "17:21 UTC",
+  "next_allocation": "09:00 UTC tomorrow"
+}
