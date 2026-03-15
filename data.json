@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T21:42:37.867233+00:00",
+    "ts": "2026-03-15T22:01:37.954380+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,33 +250,33 @@
       "win_rate": 0,
       "feeds": [
         {
-          "name": "Kalshi Live",
+          "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 14:42:32,599 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 15:01:36,121 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 14:42:29,849 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+          "detail": "2026-03-15 15:00:51,533 [src.feeds.events] WARNING: CoinGecko: serving cached data (last fresh fetch succeeded earlier)"
         },
         {
-          "name": "ESPN Events",
+          "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 14:42:21,092 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
-        },
-        {
-          "name": "NewsAPI",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 14:40:11,735 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 15:00:51,467 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 14:40:09,995 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 15:00:44,230 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+        },
+        {
+          "name": "NewsAPI",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 15:00:18,429 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 14:42:32",
+        "last_scan": "2026-03-15 15:00:51",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -297,6 +297,60 @@
       "edge_is_paper": false
     },
     "alerts": [
+      {
+        "ts": "2026-03-15 14:47:59",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:54",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:49",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:43",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:38",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:33",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:28",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 14:47:06",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] WS disconnected: no close frame received or sent. Reconnecting in 1s..."
+      },
+      {
+        "ts": "2026-03-15 14:45:42",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
       {
         "ts": "2026-03-15 14:40:26",
         "level": "WARN",
@@ -329,60 +383,6 @@
       },
       {
         "ts": "2026-03-15 14:40:01",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:39:01",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:31",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:26",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:21",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:16",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:11",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:06",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:38:01",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 14:37:56",
         "level": "WARN",
         "source": "BOT",
         "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
@@ -436,83 +436,83 @@
   "news_arb": {
     "mode": "PAPER",
     "status": "RUNNING",
-    "paper_trades": 50,
-    "paper_win_rate": 0.975,
-    "paper_pnl": 369.69,
+    "paper_trades": 60,
+    "paper_win_rate": 0.98,
+    "paper_pnl": 465.79,
     "recent_signals": [
       {
-        "timestamp": "2026-03-15T21:41:10.331973+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026F0EAF2E18DC-5188D8B73EC",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112069+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202686EB6DE428E-C3B5EFF1682",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.332259+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S202699EE5D371A1-7EA0EB55BA0",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112317+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202624233B413FA-5D00D84C1BB",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.332348+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20268BBC82F96D4-BCBABF9CBF9",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112457+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20264DFAA1E21F8-A3FBCB9B398",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.332456+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S20261DE287EAEB1-DC228E99D56",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112584+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026788BEF88D7D-B429E7E7628",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.332668+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202606617EE0656-0FC9A7B09F0",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112676+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S202638687B0449D-491BF8ADE46",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.332831+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20268938CBA1D21-F820EC4D20C",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112742+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026EC38088D1EA-DCED30ADE02",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.333004+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D5FE415354F-9EAE8614A91",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112802+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20262044CF6CDD4-F0B5F9E2709",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.333151+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026996F658F341-00E4B50252A",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112876+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20265C1CCFFC0B2-1BD3C2DBB8F",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.333222+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026B50120FD295-6C0C8F7299E",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.112946+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S20266775B090746-6D83DF5326C",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       },
       {
-        "timestamp": "2026-03-15T21:41:10.333315+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A8EA95CF0C5-83688F97F38",
-        "direction": "NO",
+        "timestamp": "2026-03-15T21:53:30.113004+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20262EDF93193C6-14AEA0816F1",
+        "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "How To Watch: No. 1 Michigan vs No. 7 Purdue in Big Ten Tournament Championship - Maize n Brew"
+        "article_title": "Arkansas tops Vanderbilt to win first SEC tournament since 2000 - ESPN"
       }
     ],
     "promotion_eligible": false,
-    "last_signal": "2026-03-15T21:41:10.333315+00:00"
+    "last_signal": "2026-03-15T21:53:30.113004+00:00"
   },
   "sports_momentum": {
     "mode": "PAPER",
@@ -557,5 +557,717 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T21:42:37.997375+00:00"
+  "status": {
+    "daily_pnl": 0.0,
+    "capital_deployed": 3000.0,
+    "halted": false,
+    "halt_reason": "",
+    "strategies": {
+      "bot": {
+        "name": "Kalshi Momentum Bot",
+        "status": "LIVE",
+        "description": "Crypto momentum",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "edgelab": {
+        "name": "Event Arb Scanner",
+        "status": "PAPER",
+        "description": "Multi-platform arb",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "0 min ago"
+      },
+      "behavioral_bias": {
+        "name": "Behavioral Bias",
+        "status": "BUILDING",
+        "description": "Favorite-longshot bias",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "stale_quote": {
+        "name": "Stale Quote",
+        "status": "BUILDING",
+        "description": "Aged limit order lifter",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "resolution_lag": {
+        "name": "Resolution Lag",
+        "status": "BUILDING",
+        "description": "Already-resolved markets",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "0 min ago"
+      },
+      "alt_data": {
+        "name": "Alt Data (Sports/Weather)",
+        "status": "BUILDING",
+        "description": "ESPN + NWS + Congress",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "stat_pairs": {
+        "name": "Stat Pairs",
+        "status": "BUILDING",
+        "description": "Correlated market arb",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "theta_decay": {
+        "name": "Theta Decay",
+        "status": "BUILDING",
+        "description": "Time premium capture",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "clob_mm": {
+        "name": "CLOB Market Making",
+        "status": "BUILDING",
+        "description": "Polymarket bid-ask spread",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "political_base": {
+        "name": "Political Base Rate",
+        "status": "BUILDING",
+        "description": "Incumbent/base rate edge",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "cross_venue": {
+        "name": "Cross-Venue Arb",
+        "status": "BUILDING",
+        "description": "Kalshi vs Polymarket",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      },
+      "vol_signal": {
+        "name": "Volume Signal",
+        "status": "BUILDING",
+        "description": "Whale flow detector",
+        "today_pnl": null,
+        "allocation": 0,
+        "last_signal": "No signals today"
+      }
+    },
+    "allocations": {
+      "strat_z": 3000.0
+    }
+  },
+  "trades": [
+    {
+      "id": 50,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_24",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-14T20:45:11.880666+00:00",
+      "closed_at": "2026-03-14T21:45:11.880666+00:00"
+    },
+    {
+      "id": 49,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_23",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-14T21:45:11.880666+00:00",
+      "closed_at": "2026-03-14T22:45:11.880666+00:00"
+    },
+    {
+      "id": 48,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_22",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-14T22:45:11.880666+00:00",
+      "closed_at": "2026-03-14T23:45:11.880666+00:00"
+    },
+    {
+      "id": 47,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_21",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-14T23:45:11.880666+00:00",
+      "closed_at": "2026-03-15T00:45:11.880666+00:00"
+    },
+    {
+      "id": 46,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_20",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T00:45:11.880666+00:00",
+      "closed_at": "2026-03-15T01:45:11.880666+00:00"
+    },
+    {
+      "id": 45,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_19",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T01:45:11.880666+00:00",
+      "closed_at": "2026-03-15T02:45:11.880666+00:00"
+    },
+    {
+      "id": 44,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_18",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T02:45:11.880666+00:00",
+      "closed_at": "2026-03-15T03:45:11.880666+00:00"
+    },
+    {
+      "id": 43,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_17",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T03:45:11.880666+00:00",
+      "closed_at": "2026-03-15T04:45:11.880666+00:00"
+    },
+    {
+      "id": 42,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_16",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T04:45:11.880666+00:00",
+      "closed_at": "2026-03-15T05:45:11.880666+00:00"
+    },
+    {
+      "id": 41,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_15",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T05:45:11.880666+00:00",
+      "closed_at": "2026-03-15T06:45:11.880666+00:00"
+    },
+    {
+      "id": 40,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_14",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T06:45:11.880666+00:00",
+      "closed_at": "2026-03-15T07:45:11.880666+00:00"
+    },
+    {
+      "id": 39,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_13",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T07:45:11.880666+00:00",
+      "closed_at": "2026-03-15T08:45:11.880666+00:00"
+    },
+    {
+      "id": 38,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_12",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T08:45:11.880666+00:00",
+      "closed_at": "2026-03-15T09:45:11.880666+00:00"
+    },
+    {
+      "id": 37,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_11",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T09:45:11.880666+00:00",
+      "closed_at": "2026-03-15T10:45:11.880666+00:00"
+    },
+    {
+      "id": 36,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_10",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T10:45:11.880666+00:00",
+      "closed_at": "2026-03-15T11:45:11.880666+00:00"
+    },
+    {
+      "id": 35,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_9",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T11:45:11.880666+00:00",
+      "closed_at": "2026-03-15T12:45:11.880666+00:00"
+    },
+    {
+      "id": 34,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_8",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T12:45:11.880666+00:00",
+      "closed_at": "2026-03-15T13:45:11.880666+00:00"
+    },
+    {
+      "id": 33,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_7",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T13:45:11.880666+00:00",
+      "closed_at": "2026-03-15T14:45:11.880666+00:00"
+    },
+    {
+      "id": 32,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_6",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T14:45:11.880666+00:00",
+      "closed_at": "2026-03-15T15:45:11.880666+00:00"
+    },
+    {
+      "id": 31,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_5",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T15:45:11.880666+00:00",
+      "closed_at": "2026-03-15T16:45:11.880666+00:00"
+    },
+    {
+      "id": 30,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_4",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T16:45:11.880666+00:00",
+      "closed_at": "2026-03-15T17:45:11.880666+00:00"
+    },
+    {
+      "id": 29,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_3",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T17:45:11.880666+00:00",
+      "closed_at": "2026-03-15T18:45:11.880666+00:00"
+    },
+    {
+      "id": 28,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_2",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T18:45:11.880666+00:00",
+      "closed_at": "2026-03-15T19:45:11.880666+00:00"
+    },
+    {
+      "id": 27,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_1",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T19:45:11.880666+00:00",
+      "closed_at": "2026-03-15T20:45:11.880666+00:00"
+    },
+    {
+      "id": 26,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_0",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T20:45:11.880666+00:00",
+      "closed_at": "2026-03-15T21:45:11.880666+00:00"
+    },
+    {
+      "id": 25,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_24",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-14T20:42:35.747968+00:00",
+      "closed_at": "2026-03-14T21:42:35.747968+00:00"
+    },
+    {
+      "id": 24,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_23",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-14T21:42:35.747968+00:00",
+      "closed_at": "2026-03-14T22:42:35.747968+00:00"
+    },
+    {
+      "id": 23,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_22",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-14T22:42:35.747968+00:00",
+      "closed_at": "2026-03-14T23:42:35.747968+00:00"
+    },
+    {
+      "id": 22,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_21",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-14T23:42:35.747968+00:00",
+      "closed_at": "2026-03-15T00:42:35.747968+00:00"
+    },
+    {
+      "id": 21,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_20",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T00:42:35.747968+00:00",
+      "closed_at": "2026-03-15T01:42:35.747968+00:00"
+    },
+    {
+      "id": 20,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_19",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T01:42:35.747968+00:00",
+      "closed_at": "2026-03-15T02:42:35.747968+00:00"
+    },
+    {
+      "id": 19,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_18",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T02:42:35.747968+00:00",
+      "closed_at": "2026-03-15T03:42:35.747968+00:00"
+    },
+    {
+      "id": 18,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_17",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T03:42:35.747968+00:00",
+      "closed_at": "2026-03-15T04:42:35.747968+00:00"
+    },
+    {
+      "id": 17,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_16",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T04:42:35.747968+00:00",
+      "closed_at": "2026-03-15T05:42:35.747968+00:00"
+    },
+    {
+      "id": 16,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_15",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T05:42:35.747968+00:00",
+      "closed_at": "2026-03-15T06:42:35.747968+00:00"
+    },
+    {
+      "id": 15,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_14",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T06:42:35.747968+00:00",
+      "closed_at": "2026-03-15T07:42:35.747968+00:00"
+    },
+    {
+      "id": 14,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_13",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T07:42:35.747968+00:00",
+      "closed_at": "2026-03-15T08:42:35.747968+00:00"
+    },
+    {
+      "id": 13,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_12",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T08:42:35.747968+00:00",
+      "closed_at": "2026-03-15T09:42:35.747968+00:00"
+    },
+    {
+      "id": 12,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_11",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T09:42:35.747968+00:00",
+      "closed_at": "2026-03-15T10:42:35.747968+00:00"
+    },
+    {
+      "id": 11,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_10",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T10:42:35.747968+00:00",
+      "closed_at": "2026-03-15T11:42:35.747968+00:00"
+    },
+    {
+      "id": 10,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_9",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T11:42:35.747968+00:00",
+      "closed_at": "2026-03-15T12:42:35.747968+00:00"
+    },
+    {
+      "id": 9,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_8",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T12:42:35.747968+00:00",
+      "closed_at": "2026-03-15T13:42:35.747968+00:00"
+    },
+    {
+      "id": 8,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_7",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T13:42:35.747968+00:00",
+      "closed_at": "2026-03-15T14:42:35.747968+00:00"
+    },
+    {
+      "id": 7,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_6",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T14:42:35.747968+00:00",
+      "closed_at": "2026-03-15T15:42:35.747968+00:00"
+    },
+    {
+      "id": 6,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_5",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T15:42:35.747968+00:00",
+      "closed_at": "2026-03-15T16:42:35.747968+00:00"
+    },
+    {
+      "id": 5,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_4",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T16:42:35.747968+00:00",
+      "closed_at": "2026-03-15T17:42:35.747968+00:00"
+    },
+    {
+      "id": 4,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_3",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T17:42:35.747968+00:00",
+      "closed_at": "2026-03-15T18:42:35.747968+00:00"
+    },
+    {
+      "id": 3,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_2",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T18:42:35.747968+00:00",
+      "closed_at": "2026-03-15T19:42:35.747968+00:00"
+    },
+    {
+      "id": 2,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_1",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.4,
+      "pnl": -4.0,
+      "opened_at": "2026-03-15T19:42:35.747968+00:00",
+      "closed_at": "2026-03-15T20:42:35.747968+00:00"
+    },
+    {
+      "id": 1,
+      "strategy_name": "alpha_strategy",
+      "market_id": "mkt_0",
+      "side": "YES",
+      "size": 100.0,
+      "entry_price": 0.5,
+      "exit_price": 0.6,
+      "pnl": 10.0,
+      "opened_at": "2026-03-15T20:42:35.747968+00:00",
+      "closed_at": "2026-03-15T21:42:35.747968+00:00"
+    }
+  ],
+  "allocations": {
+    "strat_z": 3000.0
+  },
+  "_exported_at": "2026-03-15T22:01:38.584094+00:00"
 }

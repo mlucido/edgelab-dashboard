@@ -1,7 +1,0 @@
-.env
-*.pem
-*.key
-sim_results.db
-sim.log
-__pycache__/
-*.pyc
