@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T20:27:07.683506+00:00",
+    "ts": "2026-03-15T20:32:10.573011+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,24 +250,24 @@
       "win_rate": 0,
       "feeds": [
         {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 13:27:03,439 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
-        },
-        {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 13:27:03,227 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+          "detail": "2026-03-15 13:32:04,638 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:26:58,541 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 13:31:49,180 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 13:26:45,171 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 13:31:33,296 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+        },
+        {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 13:31:32,754 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "NewsAPI",
@@ -276,8 +276,8 @@
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 13:27:03",
-        "markets_scanned": 1000,
+        "last_scan": "2026-03-15 13:31:33",
+        "markets_scanned": 500,
         "signals_found": 0
       },
       "circuit_breaker": {
@@ -296,7 +296,98 @@
       "edge_deployed": 0.0,
       "edge_is_paper": false
     },
-    "alerts": []
+    "alerts": [
+      {
+        "ts": "2026-03-15 13:32:02",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:32",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:27",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:22",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:17",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:12",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:07",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:31:02",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:57",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:52",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:47",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:42",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:37",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:32",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      },
+      {
+        "ts": "2026-03-15 13:30:27",
+        "level": "WARN",
+        "source": "BOT",
+        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
+      }
+    ]
   },
   "framework": {
     "strategies": [
@@ -345,83 +436,83 @@
   "news_arb": {
     "mode": "PAPER",
     "status": "RUNNING",
-    "paper_trades": 17,
+    "paper_trades": 27,
     "paper_win_rate": 0.9412,
     "paper_pnl": 148.66,
     "recent_signals": [
       {
-        "timestamp": "2026-03-15T18:12:56.751054+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S202616BB262C176-569BF07EB6D",
+        "timestamp": "2026-03-15T20:29:52.686338+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026C24C81D3395-93ECBD68DF0",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.751120+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202696A889403C8-3C201D2B501",
+        "timestamp": "2026-03-15T20:29:52.686649+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20260B4689686CE-7A535B8D656",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.751184+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S20268703C18E530-7BE262C5BD0",
+        "timestamp": "2026-03-15T20:29:52.686732+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026B87D8B2124C-4BCA0C014EE",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.751260+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20264B75CDB2B25-5DFF6C3851E",
+        "timestamp": "2026-03-15T20:29:52.686811+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026EB734C06AC6-C87CA82D171",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.751335+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026AD357AAA25B-94CFE95EC24",
+        "timestamp": "2026-03-15T20:29:52.686890+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026B9AAD02044E-041D55604F3",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.751410+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026E7E7BC022EE-824F6620297",
+        "timestamp": "2026-03-15T20:29:52.687040+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202660B5046AA9F-298C8D7B9F6",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.770896+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20261F9B722DBE1-1D3ACA9B4D6",
+        "timestamp": "2026-03-15T20:29:52.687276+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S20268E5D7477706-934931360DA",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.770963+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A424B2D423D-772CEF87871",
+        "timestamp": "2026-03-15T20:29:52.687474+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20266EF599048AB-56486152405",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.771045+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202687D7D0B3A1F-4BB51265983",
+        "timestamp": "2026-03-15T20:29:52.687579+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026D1B39DDA3CA-991A2BC29CC",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       },
       {
-        "timestamp": "2026-03-15T18:12:56.771115+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026F826C047F61-BC2FAEBDCFA",
+        "timestamp": "2026-03-15T20:29:52.687668+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026114C770A725-8CEEDD6904C",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
+        "article_title": "Shohei Ohtani ends World Baseball Classic just like in 2023, but as loser instead of champion - AP News"
       }
     ],
     "promotion_eligible": false,
-    "last_signal": "2026-03-15T18:12:56.771115+00:00"
+    "last_signal": "2026-03-15T20:29:52.687668+00:00"
   },
   "sports_momentum": {
     "mode": "PAPER",
@@ -466,5 +557,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T20:27:07.811551+00:00"
+  "_exported_at": "2026-03-15T20:32:10.900853+00:00"
 }
