@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T19:01:41.268015+00:00",
+    "ts": "2026-03-15T19:06:42.917257+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,33 +250,33 @@
       "win_rate": 0,
       "feeds": [
         {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 12:06:39,695 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+        },
+        {
           "name": "CoinGecko",
           "status": "ERROR",
-          "detail": "2026-03-15 12:01:35,109 [src.feeds.events] WARNING: CoinGecko 429 rate limited (attempt 3/4) \u2014 backing off 8s"
+          "detail": "2026-03-15 12:06:38,159 [src.feeds.events] WARNING: CoinGecko 429 rate limited (attempt 3/4) \u2014 backing off 8s"
         },
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 12:01:20,941 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
-        },
-        {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 12:00:36,756 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 12:06:29,594 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 12:00:16,418 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 12:05:13,532 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         },
         {
           "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:59:36,982 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 12:04:37,562 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 12:00:36",
+        "last_scan": "2026-03-15 12:06:39",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -557,5 +557,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T19:01:41.393615+00:00"
+  "_exported_at": "2026-03-15T19:06:43.040945+00:00"
 }
