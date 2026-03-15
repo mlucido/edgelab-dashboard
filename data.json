@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T18:09:50.526912+00:00",
+    "ts": "2026-03-15T18:14:52.322954+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -252,31 +252,31 @@
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:09:43,232 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 11:14:47,618 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:09:34,683 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 11:14:34,968 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         },
         {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 11:08:53,272 [src.feeds.events] WARNING: CoinGecko: serving cached data (last fresh fetch succeeded earlier)"
+          "detail": "2026-03-15 11:14:09,651 [src.feeds.events] WARNING: CoinGecko: serving cached data (last fresh fetch succeeded earlier)"
         },
         {
           "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:08:42,439 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 11:14:02,792 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         },
         {
           "name": "Polymarket REST",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:08:39,074 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 11:14:02,162 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 11:08:42",
+        "last_scan": "2026-03-15 11:14:02",
         "markets_scanned": 1000,
         "signals_found": 0
       },
@@ -413,90 +413,106 @@
         "last_updated": "2026-03-15T17:50:24.302695+00:00"
       }
     ],
-    "capital_allocations": [],
+    "capital_allocations": [
+      {
+        "strategy": "test_strategy",
+        "allocated_pct": 0.3333,
+        "allocated_usd": 166.67
+      },
+      {
+        "strategy": "kalshi_crypto_momentum",
+        "allocated_pct": 0.3333,
+        "allocated_usd": 166.67
+      },
+      {
+        "strategy": "news_arb",
+        "allocated_pct": 0.3333,
+        "allocated_usd": 166.67
+      }
+    ],
     "recent_suggestions": [],
     "last_analyzed": "2026-03-15"
   },
   "news_arb": {
     "mode": "PAPER",
     "status": "RUNNING",
-    "paper_trades": 42,
-    "paper_win_rate": 1.0,
-    "paper_pnl": 1056.88,
+    "paper_trades": 17,
+    "paper_win_rate": 0.0,
+    "paper_pnl": 0.0,
     "recent_signals": [
       {
-        "timestamp": "2026-03-15T17:02:37.935423+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20269DE4D86585C-8164F9ADD50",
+        "timestamp": "2026-03-15T18:12:56.751054+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S202616BB262C176-569BF07EB6D",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.935653+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026CF4E5D23D7B-186C87B430A",
+        "timestamp": "2026-03-15T18:12:56.751120+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202696A889403C8-3C201D2B501",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.935813+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026DFBDAA89D7B-2DBAD24F07A",
+        "timestamp": "2026-03-15T18:12:56.751184+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S20268703C18E530-7BE262C5BD0",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.935962+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026D2E698B0456-7309814746E",
+        "timestamp": "2026-03-15T18:12:56.751260+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20264B75CDB2B25-5DFF6C3851E",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.936111+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202669A77D49801-D07D017569C",
+        "timestamp": "2026-03-15T18:12:56.751335+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026AD357AAA25B-94CFE95EC24",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.936269+00:00",
-        "market_id": "KXMVECROSSCATEGORY-S2026D04B8C84368-A1FB10BB940",
+        "timestamp": "2026-03-15T18:12:56.751410+00:00",
+        "market_id": "KXMVECROSSCATEGORY-S2026E7E7BC022EE-824F6620297",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "Abreu\u2019s blast sends Venezuela past Shohei Ohtani\u2019s Japan and into WBC semi-finals - The Guardian"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.936422+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026BF8B9672B6B-776AC51AA1A",
+        "timestamp": "2026-03-15T18:12:56.770896+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20261F9B722DBE1-1D3ACA9B4D6",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.936570+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026BC6A90458FD-7D8E63F0EC3",
+        "timestamp": "2026-03-15T18:12:56.770963+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026A424B2D423D-772CEF87871",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.936724+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S20269139159BB1A-5B6DE1D0BBB",
+        "timestamp": "2026-03-15T18:12:56.771045+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202687D7D0B3A1F-4BB51265983",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
       },
       {
-        "timestamp": "2026-03-15T17:02:37.936861+00:00",
-        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S202665E58EEFD16-A86C0E66FFE",
+        "timestamp": "2026-03-15T18:12:56.771115+00:00",
+        "market_id": "KXMVESPORTSMULTIGAMEEXTENDED-S2026F826C047F61-BC2FAEBDCFA",
         "direction": "YES",
         "edge_pct": 0.45,
-        "article_title": "WWE Star Shows Off Graphic Injury After AAA Rey De Reyes - WrestleTalk"
+        "article_title": "In South Carolina, measles shows how far apart neighbors can be on vaccines - NPR"
       }
     ],
     "promotion_eligible": false,
-    "last_signal": "2026-03-15T17:02:37.936861+00:00"
+    "last_signal": "2026-03-15T18:12:56.771115+00:00"
   },
   "sports_momentum": {
     "mode": "PAPER",
@@ -509,15 +525,16 @@
     "active_sports": []
   },
   "resolution_lag": {
-    "mode": "PAPER",
-    "status": "RUNNING",
+    "mode": "PARKED",
+    "status": "SCANNING",
     "paper_trades": 0,
     "paper_win_rate": 0.0,
     "paper_pnl": 0.0,
     "recent_signals": [],
-    "promotion_eligible": true,
-    "lag_frequency_pct": 61.21,
-    "avg_lag_duration_min": 15.63
+    "promotion_eligible": false,
+    "blocker": "Kalshi CLOBs clear atomically \u2014 no lag window. Needs Polymarket integration.",
+    "lag_frequency_pct": 0.0,
+    "avg_lag_duration_min": 0.0
   },
   "funding_rate_arb": {
     "mode": "PAPER",
@@ -540,5 +557,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T18:09:50.632645+00:00"
+  "_exported_at": "2026-03-15T18:14:52.636720+00:00"
 }
