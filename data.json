@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T18:21:28.873797+00:00",
+    "ts": "2026-03-15T18:26:30.347190+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,34 +250,34 @@
       "win_rate": 0,
       "feeds": [
         {
-          "name": "ESPN Events",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 11:21:25,531 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
-        },
-        {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 11:21:25,435 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+          "detail": "2026-03-15 11:26:25,551 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
-          "name": "Polymarket REST",
+          "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:21:02,113 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 11:26:00,350 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
         },
         {
           "name": "Kalshi Live",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:20:32,092 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+          "detail": "2026-03-15 11:25:55,139 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
+        },
+        {
+          "name": "Polymarket REST",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 11:25:10,064 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
         },
         {
           "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 11:19:35,171 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
+          "detail": "2026-03-15 11:24:35,315 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 11:21:02",
-        "markets_scanned": 500,
+        "last_scan": "2026-03-15 11:25:55",
+        "markets_scanned": 1000,
         "signals_found": 0
       },
       "circuit_breaker": {
@@ -296,98 +296,7 @@
       "edge_deployed": 0.0,
       "edge_is_paper": false
     },
-    "alerts": [
-      {
-        "ts": "2026-03-15 10:56:14",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:56:09",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:56:04",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:59",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:54",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:49",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:44",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:39",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:34",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:29",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:55:09",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:54:59",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:54:54",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:54:49",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      },
-      {
-        "ts": "2026-03-15 10:54:44",
-        "level": "WARN",
-        "source": "BOT",
-        "message": "[ETH-USD] Rejected: yes_price $0.5000 is a placeholder (empty book)"
-      }
-    ]
+    "alerts": []
   },
   "framework": {
     "strategies": [
@@ -557,5 +466,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T18:21:28.978076+00:00"
+  "_exported_at": "2026-03-15T18:26:30.449255+00:00"
 }
