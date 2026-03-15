@@ -1,6 +1,6 @@
 {
   "data": {
-    "ts": "2026-03-15T17:44:42.983763+00:00",
+    "ts": "2026-03-15T17:49:44.508348+00:00",
     "bot": {
       "available": true,
       "bankroll": 497.4,
@@ -250,34 +250,34 @@
       "win_rate": 0,
       "feeds": [
         {
-          "name": "NewsAPI",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 10:44:33,742 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
-        },
-        {
-          "name": "Kalshi Live",
-          "status": "ACTIVE",
-          "detail": "2026-03-15 10:44:33,681 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
-        },
-        {
           "name": "CoinGecko",
           "status": "CACHED",
-          "detail": "2026-03-15 10:44:29,163 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
+          "detail": "2026-03-15 10:49:44,280 [src.feeds.events] WARNING: CoinGecko: hourly call cap (50/hr) reached \u2014 returning cached data"
         },
         {
-          "name": "Polymarket REST",
+          "name": "NewsAPI",
           "status": "ACTIVE",
-          "detail": "2026-03-15 10:44:23,625 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+          "detail": "2026-03-15 10:49:33,908 [src.feeds.events] WARNING: NewsAPI repeated 429s \u2014 increasing poll interval to 300s"
         },
         {
           "name": "ESPN Events",
           "status": "ACTIVE",
-          "detail": "2026-03-15 10:44:20,938 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+          "detail": "2026-03-15 10:49:24,558 [src.feeds.events] INFO: ESPN total: 33 events across 5 sports"
+        },
+        {
+          "name": "Polymarket REST",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 10:49:21,713 [src.feeds.polymarket] INFO: REST poll complete: 500 binary markets published"
+        },
+        {
+          "name": "Kalshi Live",
+          "status": "ACTIVE",
+          "detail": "2026-03-15 10:48:49,316 [src.feeds.kalshi] INFO: Kalshi live poll: 1000 markets published (5 pages)"
         }
       ],
       "scan_status": {
-        "last_scan": "2026-03-15 10:44:33",
-        "markets_scanned": 1000,
+        "last_scan": "2026-03-15 10:49:21",
+        "markets_scanned": 500,
         "signals_found": 0
       },
       "circuit_breaker": {
@@ -449,5 +449,5 @@
     "spread_capture_rate": 0.3786,
     "promotion_eligible": false
   },
-  "_exported_at": "2026-03-15T17:44:43.082472+00:00"
+  "_exported_at": "2026-03-15T17:49:44.609248+00:00"
 }
